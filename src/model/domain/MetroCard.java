@@ -3,12 +3,12 @@ package model.domain;
 import java.util.Objects;
 
 public class MetroCard {
-    private int kaartID;
+    private String kaartID;
     private String maandJaarAankoop;
     private int beschikbareRitten;
     private int aantalVerbruikteRitten;
 
-    public MetroCard(int kaartID, String maandJaarAankoop, int beschikbareRitten, int aantalVerbruikteRitten) {
+    public MetroCard(String kaartID, String maandJaarAankoop, int beschikbareRitten, int aantalVerbruikteRitten) {
         setKaartID(kaartID);
         setMaandJaarAankoop(maandJaarAankoop);
         setBeschikbareRitten(beschikbareRitten);
@@ -16,7 +16,7 @@ public class MetroCard {
     }
 
 
-    public void setKaartID(int kaartID) {
+    public void setKaartID(String kaartID) {
         this.kaartID = kaartID;
     }
 
@@ -36,7 +36,7 @@ public class MetroCard {
     public String getWriteFormat() {
         return this.getKaartID() + "," + this.getMaandJaarAankoop() + "," + this.getBeschikbareRitten() + "," + this.getAantalVerbruikteRitten();
     }
-    public int getKaartID() {
+    public String getKaartID() {
         return kaartID;
     }
 
@@ -67,6 +67,13 @@ public class MetroCard {
     @Override
     public int hashCode() {
         return Objects.hash(getKaartID(), getMaandJaarAankoop(), getBeschikbareRitten(), getAantalVerbruikteRitten());
+    }
+
+    @Override
+    public String toString() {
+        return "MetroCard{" +
+                "kaartID=" + kaartID +
+                '}';
     }
 }
 

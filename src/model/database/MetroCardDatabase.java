@@ -5,9 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,55 +13,47 @@ import javafx.scene.control.TableView;
 import model.domain.MetroCard;
 
 public abstract class MetroCardDatabase<K, V> {
+    TreeMap<String, V> database = new TreeMap<>();
 
-    // list to store metro card data
-    private List<model.domain.MetroCard> metroCards;
-
-    // constructor
-    public MetroCardDatabase() {
-        metroCards = new ArrayList<>();
+    protected MetroCardDatabase() {
+        load();
     }
 
-    // method to load data from text file
-    public void load() throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("metrocards.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                int id = Integer.parseInt(data[0]);
-                String maandJaar = data[1];
-                int beschikbaar = Integer.parseInt(data[2]);
-                int gebruikt = Integer.parseInt(data[3]);
-                metroCards.add(new MetroCard(id, maandJaar, beschikbaar, gebruikt));
-            }
+    public abstract void load();
+    public abstract void save(TreeMap<K,V> map);
+
+    public void setDatabase(TreeMap<String, V> database) {
+        this.database = database;
+    }
+    public TreeMap<String, V> getDatabase() {
+        return database;
+    }
+    public V getMetroCard(String name) {
+        return database.get(name);
+    }
+
+    public HashMap<String, Integer> getBeschikbareRitten() {
+        HashMap<String, Integer> ritten = new HashMap<>();
+        for (V metroCard: getDatabase().values()) {
+            ritten.put(((MetroCard) metroCard).getKaartID(), ((MetroCard) metroCard).getBeschikbareRitten());
         }
+        return ritten;
     }
 
-    // method to save data to text file
-    public void save() throws IOException {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("metrocards.txt"))) {
-            for (MetroCard mc : metroCards) {
-                bw.write(mc.getKaartID() + "," + mc.getMaandJaarAankoop() + "," + mc.getBeschikbareRitten() + "," + mc.getAantalVerbruikteRitten());
-                bw.newLine();
-            }
+    public HashMap<String, Integer> getGebruikteRitten() {
+        HashMap<String, Integer> ritten = new HashMap<>();
+        for (V metrocard: getDatabase().values()) {
+            ritten.put(((MetroCard) metrocard).getKaartID(), ((MetroCard) metrocard).getAantalVerbruikteRitten());
         }
+        return ritten;
     }
 
-    // method to display metro card data in table view
-    public void displayInTableView(TableView<ObservableList<String>> tableView) {
-        // clear existing data
-        tableView.getColumns().clear();
-        tableView.getItems().clear();
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 
-        // sort metro cards by id
-        Collections.sort(metroCards, (mc1, mc2) -> mc1.getKaartID() - mc2.getKaartID());
-
-        // create observable list to hold metro card data
-        ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
-
-        // create table columns
-        String[] columnNames = {"MetroCard ID", "Month#Year of Purchase", "Available Tickets","Used Tickets"};}
-    public List<MetroCard> getDatabase() {
-        return metroCards;
+    public void reset() {
+        load();
     }
 }

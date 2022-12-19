@@ -1,10 +1,12 @@
 package model.database;
 
+
 import model.domain.DomainException;
 import model.domain.MetroCard;
-import model.domain.MetroCard;
+
 
 import java.io.*;
+import java.util.Objects;
 import java.util.TreeMap;
 
 public abstract class TextLoadSaveTemplate<K, V> {
