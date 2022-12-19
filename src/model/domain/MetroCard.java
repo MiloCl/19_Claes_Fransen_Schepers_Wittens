@@ -15,7 +15,6 @@ public class MetroCard {
         setAantalVerbruikteRitten(aantalVerbruikteRitten);
     }
 
-
     public void setKaartID(String kaartID) {
         this.kaartID = kaartID;
     }
@@ -33,9 +32,6 @@ public class MetroCard {
         this.aantalVerbruikteRitten = aantalVerbruikteRitten;
     }
 
-    public String getWriteFormat() {
-        return this.getKaartID() + "," + this.getMaandJaarAankoop() + "," + this.getBeschikbareRitten() + "," + this.getAantalVerbruikteRitten();
-    }
     public String getKaartID() {
         return kaartID;
     }
