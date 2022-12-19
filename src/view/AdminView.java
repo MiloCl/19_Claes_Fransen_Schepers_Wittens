@@ -1,25 +1,17 @@
 package view;
 
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
+import controller.AdminViewController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.domain.MetroCard;
 
 public class AdminView{
+
 	private Stage stage = new Stage();
 		
-	public AdminView(){
+	public AdminView(AdminViewController adminViewController){
 
 		stage.setTitle("ADMIN VIEW");
 		stage.initStyle(StageStyle.UTILITY);
@@ -27,7 +19,7 @@ public class AdminView{
 		stage.setY(5);
 		Group root = new Group();
 		Scene scene = new Scene(root, 690, 680);
-		BorderPane borderPane = new AdminMainPane();
+		BorderPane borderPane = new AdminMainPane(adminViewController.getFacade());
 		borderPane.prefHeightProperty().bind(scene.heightProperty());
 		borderPane.prefWidthProperty().bind(scene.widthProperty());
 		root.getChildren().add(borderPane);

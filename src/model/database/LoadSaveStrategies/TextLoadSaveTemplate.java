@@ -1,19 +1,21 @@
-package model.database;
-import model.domain.MetroCard;
+package model.database.LoadSaveStrategies;
+import model.database.LoadSaveStrategies.LoadSaveStrategyEnum;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class TextLoadSaveTemplate <K,V>{
+public abstract class TextLoadSaveTemplate<K,V>{
 
+    protected final LoadSaveStrategyEnum loadSaveStrategyEnum;
+
+    protected TextLoadSaveTemplate(LoadSaveStrategyEnum loadSaveStrategyEnum) {
+        this.loadSaveStrategyEnum = loadSaveStrategyEnum;
+    }
     protected TreeMap<K,V> load() throws IOException {
         TreeMap<K,V> returnMap = new TreeMap<K,V>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/bestanden/metrocards.txt")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(loadSaveStrategyEnum.getFile()))){
             String line = reader.readLine();
             while (line != null && !line.trim().equals("")) {
                 String[] tokens = line.split(",");
@@ -26,9 +28,8 @@ public abstract class TextLoadSaveTemplate <K,V>{
         return returnMap;
     }
 
-    abstract V maakObject(String[] tokens);
+    protected abstract V maakObject(String[] tokens);
 
-    abstract K getKey(String[] tokens);
+    protected abstract K getKey(String[] tokens);
 
-    public abstract TreeMap<String, MetroCard> load(File file);
 }
