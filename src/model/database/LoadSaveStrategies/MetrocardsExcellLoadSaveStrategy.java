@@ -1,12 +1,12 @@
 package model.database.LoadSaveStrategies;
 
-import model.database.ExcelLoadSaveTemplate;
+import model.database.LoadSaveStrategies.ExcellLoadSaveTemplate;
 import model.domain.MetroCard;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class MetrocardsExcellLoadSaveStrategy extends ExcelLoadSaveTemplate<String, MetroCard> implements LoadSaveStrategy {
+public class MetrocardsExcellLoadSaveStrategy extends ExcellLoadSaveTemplate<String, MetroCard> implements LoadSaveStrategy {
 
     public MetrocardsExcellLoadSaveStrategy(LoadSaveStrategyEnum loadSaveStrategyEnum) {
         super(loadSaveStrategyEnum);
@@ -14,7 +14,7 @@ public class MetrocardsExcellLoadSaveStrategy extends ExcelLoadSaveTemplate<Stri
 
     @Override
     public MetroCard makeObject(ArrayList<String> tokens) {
-        return new MetroCard(tokens.get(0),(tokens.get(1)),Integer.parseInt(tokens.get(2)),Integer.parseInt(tokens.get(3)));
+        return new MetroCard(Integer.parseInt(tokens.get(0)),tokens.get(1),Integer.parseInt(tokens.get(2)),Integer.parseInt(tokens.get(3)));
     }
 
     @Override

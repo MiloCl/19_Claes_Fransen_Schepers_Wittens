@@ -4,8 +4,8 @@ import java.io.File;
 
 public enum LoadSaveStrategyEnum {
 
-    EXCEL_METROCARDS ("Excel MetroCards", "model.database.LoadSaveStrategies.MetrocardsExcelLoadSaveSaveStrategy", new File("src/bestanden/metrocards.xls")),
-    TEXT_METROCARDS ("Text MetroCards", "model.database.LoadSaveStrategies.MetrocardsTextLoadSaveStrategy", new File("src/bestanden/metrocards.txt"));
+    EXCEL_METROCARDS ("Excel MetroCards", "model.database.LoadSaveStrategies.MetrocardsExcellLoadSaveStrategy", new File("src/bestanden/metrocards.xls")),
+    TEXT_METROCARDS ("Text MetroCards", "model.database.LoadSaveStrategies.MetrocardsTekstLoadSaveStrategy", new File("src/bestanden/metrocards.txt"));
 
 
     private final String naam;

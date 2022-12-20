@@ -1,19 +1,18 @@
 package model.database.LoadSaveStrategies;
 
-import model.database.LoadSaveStrategies.TextLoadSaveTemplate;
 import model.domain.MetroCard;
 
 import java.util.TreeMap;
 
-public class MetroCardTextLoadSave extends TextLoadSaveTemplate<String, MetroCard> implements LoadSaveStrategy {
+public class MetrocardsTekstLoadSave extends TekstLoadSaveTemplate<String, MetroCard> implements LoadSaveStrategy {
 
-    public MetroCardTextLoadSave(LoadSaveStrategyEnum loadSaveStrategyEnum) {
+    public MetrocardsTekstLoadSave(LoadSaveStrategyEnum loadSaveStrategyEnum) {
         super(loadSaveStrategyEnum);
     }
 
     @Override
     public MetroCard maakObject(String[] tokens) {
-        return new MetroCard(tokens[0] , (tokens[1]), Integer.parseInt(tokens[2]) , Integer.parseInt(tokens[3]));
+        return new MetroCard(Integer.parseInt(tokens[0]) , (tokens[1]), Integer.parseInt(tokens[2]) , Integer.parseInt(tokens[3]));
     }
 
     @Override

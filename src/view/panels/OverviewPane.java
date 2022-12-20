@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import model.database.MetroCardDatabase;
+import model.domain.MetroCard;
 
 import java.util.Collection;
 import java.util.Locale;
@@ -18,7 +19,7 @@ public abstract class OverviewPane<E> extends GridPane {
     protected ObservableList<E> item;
     protected final TableView<E> tableView;
 
-    public OverviewPane(String name, Collection<E> values,  String[] names) {
+    public OverviewPane(String name, Collection<E> values, String[] names) {
         this.tableView = new TableView<E>();
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);

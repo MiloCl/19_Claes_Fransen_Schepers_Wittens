@@ -1,4 +1,4 @@
-package model.database;
+package model.database.LoadSaveStrategies;
 
 import excel.ExcelPlugin;
 import jxl.read.biff.BiffException;
@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 
-public abstract class ExcelLoadSaveTemplate<K,V>  {
+public abstract class ExcellLoadSaveTemplate<K,V>  {
 
     protected final LoadSaveStrategyEnum loadSaveStrategyEnum;
 
-    protected ExcelLoadSaveTemplate(LoadSaveStrategyEnum loadSaveStrategyEnum) {
+    protected ExcellLoadSaveTemplate(LoadSaveStrategyEnum loadSaveStrategyEnum) {
         this.loadSaveStrategyEnum = loadSaveStrategyEnum;
     }
 

@@ -13,7 +13,8 @@ public class AdminMainPane extends BorderPane {
         TabPane tabPane = new TabPane();
         //Tab spelVerloopTab = new Tab("Spelverloop");
         HBox panes = new HBox();
-        panes.getChildren().add(new MetroCardOverviewPane(facade.getMetroCardDatabase().getMetrosorts().values()));
+        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(facade.getMetroCardDatabase().getMetrosorts().values());
+        panes.getChildren().addAll(metroCardOverviewPane);
         Tab controlCenterTab = new Tab("Controller");
         Tab metroCardOverviewTab = new Tab("Metro Card Overview",panes);
         Tab setupTab = new Tab("Setup");

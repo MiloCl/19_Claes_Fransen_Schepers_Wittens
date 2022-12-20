@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeMap;
 
-public abstract class TextLoadSaveTemplate<K,V>{
+public abstract class TekstLoadSaveTemplate<K,V>{
 
     protected final LoadSaveStrategyEnum loadSaveStrategyEnum;
 
-    protected TextLoadSaveTemplate(LoadSaveStrategyEnum loadSaveStrategyEnum) {
+    protected TekstLoadSaveTemplate(LoadSaveStrategyEnum loadSaveStrategyEnum) {
         this.loadSaveStrategyEnum = loadSaveStrategyEnum;
     }
     protected TreeMap<K,V> load() throws IOException {

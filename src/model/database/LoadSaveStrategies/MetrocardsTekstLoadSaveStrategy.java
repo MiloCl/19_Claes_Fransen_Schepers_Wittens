@@ -1,11 +1,10 @@
 package model.database.LoadSaveStrategies;
 
-import model.database.LoadSaveStrategies.TextLoadSaveTemplate;
 import model.domain.MetroCard;
 
 import java.util.TreeMap;
 
-public class MetrocardsTekstLoadSaveStrategy extends TextLoadSaveTemplate<String, MetroCard> implements LoadSaveStrategy {
+public class MetrocardsTekstLoadSaveStrategy extends TekstLoadSaveTemplate<String, MetroCard> implements LoadSaveStrategy {
 
     public MetrocardsTekstLoadSaveStrategy(LoadSaveStrategyEnum loadSaveStrategyEnum) {
         super(loadSaveStrategyEnum);
@@ -13,7 +12,7 @@ public class MetrocardsTekstLoadSaveStrategy extends TextLoadSaveTemplate<String
 
     @Override
     public MetroCard maakObject(String[] tokens) {
-        return new MetroCard(tokens[0] , (tokens[1]), Integer.parseInt(tokens[2]) , Integer.parseInt(tokens[3]));
+        return new MetroCard(Integer.parseInt(tokens[0]), (tokens[1]), Integer.parseInt(tokens[2]) , Integer.parseInt(tokens[3]));
     }
 
     @Override

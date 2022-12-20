@@ -31,6 +31,7 @@ public class MetroCardDatabase {
     public void load() {
         try { this.metrosorts = LoadSaveStrategyFactory.createLoadSaveStrategy(LoadSaveStrategyEnum.EXCEL_METROCARDS).load();}
         catch (Exception e){ System.out.println(e.getMessage()); }
+
     }
 
     public void save(){

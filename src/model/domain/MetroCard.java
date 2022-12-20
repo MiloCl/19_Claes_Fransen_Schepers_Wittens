@@ -3,19 +3,19 @@ package model.domain;
 import java.util.Objects;
 
 public class MetroCard {
-    private String kaartID;
+    private int kaartID;
     private String maandJaarAankoop;
     private int beschikbareRitten;
     private int aantalVerbruikteRitten;
 
-    public MetroCard(String kaartID, String maandJaarAankoop, int beschikbareRitten, int aantalVerbruikteRitten) {
+    public MetroCard(int kaartID, String maandJaarAankoop, int beschikbareRitten, int aantalVerbruikteRitten) {
         setKaartID(kaartID);
         setMaandJaarAankoop(maandJaarAankoop);
         setBeschikbareRitten(beschikbareRitten);
         setAantalVerbruikteRitten(aantalVerbruikteRitten);
     }
 
-    public void setKaartID(String kaartID) {
+    public void setKaartID(int kaartID) {
         this.kaartID = kaartID;
     }
 
@@ -32,7 +32,7 @@ public class MetroCard {
         this.aantalVerbruikteRitten = aantalVerbruikteRitten;
     }
 
-    public String getKaartID() {
+    public int getKaartID() {
         return kaartID;
     }
 
@@ -68,7 +68,10 @@ public class MetroCard {
     @Override
     public String toString() {
         return "MetroCard{" +
-                "kaartID=" + kaartID +
+                "kaartID='" + kaartID + '\'' +
+                ", maandJaarAankoop=" + maandJaarAankoop +
+                ", beschikbareRitten=" + beschikbareRitten +
+                ", aantalVerbruikteRitten=" + aantalVerbruikteRitten +
                 '}';
     }
 }
