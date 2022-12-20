@@ -1,9 +1,9 @@
 package controller;
 
-import model.Facade;
+import model.MetroFacade;
 import view.MetroStationView;
 
 public class MetroStationViewController {
-    Facade facade = Facade.getInstance();
+    MetroFacade facade = MetroFacade.getInstance();
     MetroStationView metroStationView = new MetroStationView();
 }
