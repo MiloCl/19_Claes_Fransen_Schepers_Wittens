@@ -15,8 +15,8 @@ import javafx.util.Duration;
 
 public class SetupPane extends VBox {
     AdminViewController adminViewController;
-    Label intro = new Label("In here you can change your preferences for using the app.");
-    Label select = new Label("Select here which type of file structure");
+    Label intro = new Label("Change settings");
+    Label select = new Label("Select here the type of file structure");
     ChoiceBox<String> fileStructure = new ChoiceBox<>(FXCollections.observableArrayList("excel", "Text"));
     Button saveButton = new Button("save");
     ChoiceBox<String> itemFirst;
