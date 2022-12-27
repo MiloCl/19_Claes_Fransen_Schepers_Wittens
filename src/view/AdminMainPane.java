@@ -1,6 +1,7 @@
 package view;
 
-import controller.AdminViewController;
+import controller.AdminOverviewViewController;
+import controller.SetupPaneController;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
@@ -33,18 +34,19 @@ public class AdminMainPane extends BorderPane {
 
     }
 
-    public AdminMainPane(AdminViewController adminViewController) {
+    public AdminMainPane(AdminOverviewViewController adminOverviewViewController) {
         TabPane tabPane = new TabPane();
         HBox overviewPane = new HBox();
         HBox controlPane = new HBox();
         HBox setup = new HBox();
-        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(adminViewController);
+        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(adminOverviewViewController);
         ControlCenterPane controlCenterPane = new ControlCenterPane();
-        SetupPane setupPane = new SetupPane(adminViewController);
+        SetupPaneController setupPaneController = new SetupPaneController();
+        SetupPane setupPane = new SetupPane(setupPaneController);
         overviewPane.getChildren().addAll(metroCardOverviewPane);
         controlPane.getChildren().addAll(controlCenterPane);
         setup.getChildren().addAll(setupPane);
-        Tab controlCenterTab = new Tab("Controller",controlPane);
+        Tab controlCenterTab = new Tab("Control Center",controlPane);
         Tab metroCardOverviewTab = new Tab("Metro Card Overview",overviewPane);
         Tab setupTab = new Tab("Setup",setup);
 

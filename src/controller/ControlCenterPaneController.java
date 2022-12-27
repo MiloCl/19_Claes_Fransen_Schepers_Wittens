@@ -2,14 +2,14 @@ package controller;
 
 import model.MetroFacade;
 import model.database.MetroCardDatabase;
+import model.domain.MetroCard;
 import view.AdminMainPane;
 import view.AdminView;
 import view.panels.ControlCenterPane;
 import view.panels.MetroCardOverviewPane;
 
 import javax.naming.ldap.Control;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.TreeMap;
 
 
 public class ControlCenterPaneController implements Observer {
@@ -18,11 +18,14 @@ public class ControlCenterPaneController implements Observer {
     public static MetroCardDatabase metroCardDatabase = facade.getMetroCardDatabase();
 
     public static void openMetroStation() {
-        metroCardDatabase.load();
+        facade.openMetroStation();
     }
 
+
+
+
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(TreeMap<String, MetroCard> metroCards) {
 
     }
 }

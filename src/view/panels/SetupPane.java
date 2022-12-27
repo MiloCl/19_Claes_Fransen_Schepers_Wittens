@@ -1,9 +1,8 @@
 package view.panels;
 
-import controller.AdminViewController;
-import javafx.animation.PauseTransition;
+import controller.AdminOverviewViewController;
+import controller.SetupPaneController;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -11,24 +10,23 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.util.Duration;
 
 public class SetupPane extends VBox {
-    AdminViewController adminViewController;
+    AdminOverviewViewController adminOverviewViewController;
     Label intro = new Label("Change settings");
     Label select = new Label("Select here the type of file structure");
     ChoiceBox<String> fileFormat = new ChoiceBox<>(FXCollections.observableArrayList("Excel", "Text"));
     Button saveButton = new Button("save");
     ChoiceBox<String> itemFirst;
 
-    public SetupPane(AdminViewController adminViewController) {
+    public SetupPane(SetupPaneController setupPaneController) {
 
         //action to save button
         saveButton.setOnAction(event -> {
-            System.out.println("save");
-            adminViewController.saveFileFormat(fileFormat.getSelectionModel().getSelectedItem());
+            System.out.println("save File Format");
+            setupPaneController.saveFileFormat(fileFormat.getSelectionModel().getSelectedItem());
         });
-        fileFormat.setValue(adminViewController.getFileFormat());
+        fileFormat.setValue(setupPaneController.getFileFormat());
 
         //intro text
         BorderPane introw = new BorderPane();

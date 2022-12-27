@@ -1,11 +1,11 @@
 package model;
 
-import java.util.Observer;
+import controller.Observer;
 
 
 public interface Subject {
 
-    public void registerObserver(Observer o);
+    public void registerObserver(Observer o, MetroEventsEnum metroEventsEnum);
     public void removeObserver(Observer o);
-    public void notifyObservers();
+    public void notifyObservers(MetroEventsEnum metroEventsEnum);
 }
