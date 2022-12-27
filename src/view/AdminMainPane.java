@@ -17,7 +17,7 @@ public class AdminMainPane extends BorderPane {
         //Tab spelVerloopTab = new Tab("Spelverloop");
         HBox panes = new HBox();
         HBox controlpane = new HBox();
-        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(facade.getMetroCardDatabase().getMetrosorts().values());
+        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(facade.getMetroCardDatabase().getMetroCards().values());
         ControlCenterPane controlCenterPane = new ControlCenterPane();
 
         panes.getChildren().addAll(metroCardOverviewPane);

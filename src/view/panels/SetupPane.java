@@ -17,7 +17,7 @@ public class SetupPane extends VBox {
     AdminViewController adminViewController;
     Label intro = new Label("Change settings");
     Label select = new Label("Select here the type of file structure");
-    ChoiceBox<String> fileStructure = new ChoiceBox<>(FXCollections.observableArrayList("excel", "Text"));
+    ChoiceBox<String> fileFormat = new ChoiceBox<>(FXCollections.observableArrayList("Excel", "Text"));
     Button saveButton = new Button("save");
     ChoiceBox<String> itemFirst;
 
@@ -25,9 +25,10 @@ public class SetupPane extends VBox {
 
         //action to save button
         saveButton.setOnAction(event -> {
-            adminViewController.savePreferences(fileStructure.getSelectionModel().getSelectedItem(), itemFirst.getSelectionModel().getSelectedItem().toString());
+            System.out.println("save");
+            adminViewController.saveFileFormat(fileFormat.getSelectionModel().getSelectedItem());
         });
-        fileStructure.setValue(adminViewController.getProductFormatReader());
+        fileFormat.setValue(adminViewController.getFileFormat());
 
         //intro text
         BorderPane introw = new BorderPane();
@@ -39,25 +40,12 @@ public class SetupPane extends VBox {
         //select how you want to read files
         BorderPane fileReading = new BorderPane();
         fileReading.setLeft(select);
-        fileReading.setRight(fileStructure);
+        fileReading.setRight(fileFormat);
         fileReading.setPadding(new Insets(10, 40, 50, 20));
         select.setFont(Font.font("Verdana", 20));
 
 
-        //save button
-        PauseTransition transition = new PauseTransition(Duration.seconds(0.5));
-        transition.setOnFinished(event -> this.saveButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, new CornerRadii(5), new Insets(0)))));
-        BorderPane saveButton = new BorderPane();
-        saveButton.setCenter(this.saveButton);
-        saveButton.setPadding(new Insets(10, 10, 5, 10));
-        saveButton.setBackground(new Background(new BackgroundFill(Color.DARKSEAGREEN, new CornerRadii(0), new Insets(0))));
-        this.saveButton.setFont(Font.font("Verdana", 20));
-        this.saveButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, new CornerRadii(5), new Insets(0))));
-        this.saveButton.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
-        this.saveButton.setOnAction((ActionEvent e) ->{
-            this.saveButton.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(5), new Insets(0))));
-            transition.playFromStart();
-        } );
+
         //add all to root
         this.getChildren().addAll(introw, fileReading, saveButton);
     }

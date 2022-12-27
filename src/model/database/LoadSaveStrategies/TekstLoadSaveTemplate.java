@@ -18,7 +18,7 @@ public abstract class TekstLoadSaveTemplate<K,V>{
         try (BufferedReader reader = new BufferedReader(new FileReader(loadSaveStrategyEnum.getFile()))){
             String line = reader.readLine();
             while (line != null && !line.trim().equals("")) {
-                String[] tokens = line.split(",");
+                String[] tokens = line.split(";");
                 V element = maakObject(tokens);
                 K key = getKey(tokens);
                 returnMap.put(key,element);

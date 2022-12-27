@@ -1,10 +1,7 @@
 package model;
 
-import model.database.LoadSaveStrategies.LoadSaveStrategyEnum;
-import model.database.LoadSaveStrategies.LoadSaveStrategyFactory;
 import model.database.MetroCardDatabase;
 import model.domain.MetroCard;
-import sun.reflect.generics.tree.Tree;
 
 
 import java.util.ArrayList;
@@ -34,7 +31,7 @@ public class MetroFacade implements Subject{
 
     public void openMetroStation(){
         metroCardDatabase.load();
-        metrosorts = metroCardDatabase.getMetrosorts();
+        metrosorts = metroCardDatabase.getMetroCards();
 
     }
 

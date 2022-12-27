@@ -26,12 +26,16 @@ public class AdminViewController implements Observer {
         Setup.setProperties(format, discount);
     }
 
-    public Collection<MetroCard> getMetroCardDatabase() {
-        return getFacade().getMetroCardDatabase().getMetrosorts().values();
+    public void saveFileFormat(String format) {
+        Setup.setFileFormat(format);
     }
 
-    public String getProductFormatReader() {
-        return Setup.getMetroCardFormatReaderSettings();
+    public Collection<MetroCard> getMetroCardDatabase() {
+        return getFacade().getMetroCardDatabase().getMetroCards().values();
+    }
+
+    public String getFileFormat() {
+        return Setup.getFileFormat();
     }
 
     public MetroFacade getFacade() {

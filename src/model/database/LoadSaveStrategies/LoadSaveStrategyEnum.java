@@ -4,8 +4,8 @@ import java.io.File;
 
 public enum LoadSaveStrategyEnum {
 
-    EXCEL_METROCARDS ("Excel MetroCards", "model.database.LoadSaveStrategies.MetrocardsExcellLoadSaveStrategy", new File("src/bestanden/metrocards.xls")),
-    TEXT_METROCARDS ("Text MetroCards", "model.database.LoadSaveStrategies.MetrocardsTekstLoadSaveStrategy", new File("src/bestanden/metrocards.txt"));
+    EXCEL_METROCARDS ("Excel", "model.database.LoadSaveStrategies.MetrocardsExcellLoadSaveStrategy", new File("src/bestanden/metrocards.xls")),
+    TEXT_METROCARDS ("Text", "model.database.LoadSaveStrategies.MetrocardsTekstLoadSaveStrategy", new File("src/bestanden/metrocards.txt"));
 
 
     private final String naam;
@@ -16,6 +16,16 @@ public enum LoadSaveStrategyEnum {
         this.naam = naam;
         this.locatie = locatie;
         this.file = file;
+    }
+
+    public static LoadSaveStrategyEnum getEnumWithName(String naam) {
+        for (LoadSaveStrategyEnum l : LoadSaveStrategyEnum.values()) {
+            if (l.getNaam().equalsIgnoreCase(naam)) {
+                System.out.println("StrategyEnum: " + l.getNaam());
+                return l;
+            }
+        }
+        return null;
     }
 
     public String getNaam() { return naam; }
