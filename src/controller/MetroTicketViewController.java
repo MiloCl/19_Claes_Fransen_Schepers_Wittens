@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import static java.lang.Math.round;
+
 public class MetroTicketViewController implements Observer {
 
     private MetroTicketView metroTicketView;
@@ -25,9 +27,9 @@ public class MetroTicketViewController implements Observer {
     private TicketPriceFactory ticketPriceFactory = new TicketPriceFactory();
     private TicketPriceDiscountDecorator ticketPriceDiscountDecorator;
 
-    public MetroTicketViewController(MetroFacade facade){
+    public MetroTicketViewController(MetroFacade facade) throws IOException {
         this.facade = facade;
-        //this.ticketPrice = ticketPriceFactory.createTicketPrice;
+        ticketPrice=new BasicTicketPrice();
 
         facade.registerObserver(this, MetroEventsEnum.OPEN_METROSTATION);
         facade.registerObserver(this, MetroEventsEnum.BUY_NEW_METROCARD);
@@ -58,12 +60,12 @@ public class MetroTicketViewController implements Observer {
 
 
 
-    public String addRides() throws IOException {
-        System.out.println("ticketprice: " + ticketPrice + " (addRides methode)");
-        return "" + facade.getPrice(ticketPrice.getIs24Min(), ticketPrice.getIs64Plus(), ticketPrice.getIsStudent(), MetroCardDatabase.getInstance().getMetroCard(metroTicketPane.getMetroCardId()));
+    public String addRides(boolean age64Plus, boolean student, int nrOfRides) throws IOException {
+        System.out.println("ticketprice: " + ticketPrice.getPrice() + " (addRides methode)");
+        return "" + (round(facade.getPrice(ticketPrice.getIs24Min(), age64Plus, student,MetroCardDatabase.getInstance().getMetroCard(metroTicketPane.getMetroCardId()))))*nrOfRides;
     }
 
-    public String addDescription() throws IOException{
+    public String addDescription(boolean age64plus, boolean student) throws IOException{
         System.out.println("facades: " + facade);
         System.out.println("ticketPrice: " + ticketPrice);
         System.out.println("metroTicketView: " + metroTicketView);
@@ -71,7 +73,7 @@ public class MetroTicketViewController implements Observer {
             return "No metrocard selected";
         }
         else {
-            return facade.getPriceText(ticketPrice.getIs24Min(), ticketPrice.getIs64Plus(), ticketPrice.getIsStudent(), MetroCardDatabase.getInstance().getMetroCard(metroTicketPane.getMetroCardId()));
+            return facade.getPriceText(ticketPrice.getIs24Min(), age64plus, student, MetroCardDatabase.getInstance().getMetroCard(metroTicketPane.getMetroCardId()));
         }
     }
 

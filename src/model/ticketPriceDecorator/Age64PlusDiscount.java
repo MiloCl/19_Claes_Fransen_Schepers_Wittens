@@ -8,7 +8,7 @@ public class Age64PlusDiscount extends TicketPriceDiscountDecorator {
 
         super(ticketPrice);
         price = ticketPrice.getPrice();
-        discount = TicketPriceDiscountEnum.getDiscountByName("Age 64 Plus Discount").getDiscount();
+        discount = TicketPriceDiscountEnum.getDiscountByName("Age 64+ Discount").getDiscount();
     }
 
     @Override

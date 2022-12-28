@@ -10,6 +10,8 @@ import model.ticketPriceDecorator.TicketPriceFactory;
 import java.io.IOException;
 import java.util.*;
 
+import static java.lang.Math.round;
+
 public class MetroFacade implements Subject{
 
     private static MetroFacade facade;
@@ -82,7 +84,7 @@ public class MetroFacade implements Subject{
     }
 
     public double getPrice(boolean is24Min, boolean is64Plus, boolean isStudent, MetroCard metroCard) throws IOException {
-        return ticketPriceFactory.createTicketPrice(is24Min, is64Plus, isStudent, metroCard).getPrice();
+        return round(ticketPriceFactory.createTicketPrice(is24Min, is64Plus, isStudent, metroCard).getPrice());
     }
 
 
