@@ -11,7 +11,6 @@ import java.util.TreeMap;
 public class MetroStationViewController implements Observer{
     MetroFacade facade = MetroFacade.getInstance();
     private MetroStationView metroStationView;
-    MetroTicketViewController metroTicketViewController = new MetroTicketViewController(facade);
 
     public MetroStationViewController(MetroFacade facade) {
         this.facade = facade;
