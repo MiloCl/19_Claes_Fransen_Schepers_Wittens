@@ -14,4 +14,22 @@ public enum TicketPriceDiscountEnum {
         this.name = name;
         this.discount = discount;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public static TicketPriceDiscountEnum getDiscountByName(String name) {
+        for (TicketPriceDiscountEnum discount : TicketPriceDiscountEnum.values()) {
+            if (discount.getName().equals(name)) {
+                return discount;
+            }
+        }
+        return null;
+    }
+
 }

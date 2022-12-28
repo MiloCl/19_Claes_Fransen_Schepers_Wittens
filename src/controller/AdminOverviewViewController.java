@@ -21,8 +21,8 @@ public class AdminOverviewViewController implements Observer{
 
     public AdminOverviewViewController(MetroFacade facade) {
         facade.registerObserver(this, MetroEventsEnum.OPEN_METROSTATION);
-        facade.registerObserver(this, MetroEventsEnum.BUY_METROCARD);
-        facade.registerObserver(this, MetroEventsEnum.ADD_RIDES);
+        facade.registerObserver(this, MetroEventsEnum.BUY_NEW_METROCARD);
+        facade.registerObserver(this, MetroEventsEnum.BUY_METROCARD_TICKETS);
 
     }
 
