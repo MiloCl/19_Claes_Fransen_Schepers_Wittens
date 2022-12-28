@@ -2,10 +2,7 @@ package view;
 
 import controller.MetroTicketViewController;
 import javafx.collections.FXCollections;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -16,11 +13,14 @@ public class MetroTicketPane extends VBox {
     Button newMetroCard = new Button("New MetroCard");
     Label enterNumberOfRides = new Label("Enter number of rides:");
     TextField numberOfRides = new TextField();
+
+    CheckBox age64Plus = new CheckBox("64+?");
+    CheckBox student = new CheckBox("Student?");
     Button addRides = new Button("Add rides");
     Label priceCalculation = new Label("");
 
     public MetroTicketPane(MetroTicketViewController metroTicketViewController){
-        this.getChildren().addAll(newMetroCard, metroCardIdsChoiceBox, enterNumberOfRides, numberOfRides, addRides, priceCalculation);
+        this.getChildren().addAll(newMetroCard, metroCardIdsChoiceBox, enterNumberOfRides, numberOfRides, age64Plus, student, addRides, priceCalculation);
 
         newMetroCard.setOnAction(e -> metroTicketViewController.newMetroCard());
 
