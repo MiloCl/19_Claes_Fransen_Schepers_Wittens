@@ -2,7 +2,10 @@ package view;
 
 import controller.MetroStationViewController;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.database.MetroCardDatabase;
 import model.domain.MetroCard;
@@ -10,17 +13,33 @@ import model.domain.MetroCard;
 import java.util.ArrayList;
 
 public class MetroStationPane extends VBox {
-    static ChoiceBox<Integer> metroCardIds = new ChoiceBox<>();
+
+    static MetroGatePane gate1;
+    static MetroGatePane gate2;
+    static MetroGatePane gate3;
+
+
     public MetroStationPane(MetroStationViewController metroStationViewController) {
-        this.getChildren().add(metroCardIds);
+
+
+
+        gate1 = new MetroGatePane(metroStationViewController);
+        gate2 = new MetroGatePane(metroStationViewController);
+        gate3 = new MetroGatePane(metroStationViewController);
+
+        HBox gates = new HBox();
+        gates.setSpacing(10);
+        gates.getChildren().addAll(gate1, gate2, gate3);
+
+        this.getChildren().addAll(gates);
+
     }
 
-    /*public static void update(MetroStationViewController metroStationViewController) {
-        MetroCardDatabase metroCardDatabase = MetroCardDatabase.getInstance();
-        metroCardIds.setItems(FXCollections.observableArrayList(metroCardDatabase.getMetrocardIDlist()));
-    }*/
+
 
     public static void updateMetroCardIDList(ArrayList<Integer> ids) {
-        metroCardIds.setItems(FXCollections.observableArrayList(ids));
+       gate1.updateMetroCardIDList(ids);
+       gate2.updateMetroCardIDList(ids);
+       gate3.updateMetroCardIDList(ids);
     }
 }
