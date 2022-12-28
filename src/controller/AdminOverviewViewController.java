@@ -16,18 +16,17 @@ public class AdminOverviewViewController implements Observer{
 
     private MetroCardOverviewPane metroCardOverviewPane;
     private final MetroFacade facade = MetroFacade.getInstance();
+    private AdminView adminView;
+
 
     public AdminOverviewViewController(MetroFacade facade) {
         facade.registerObserver(this, MetroEventsEnum.OPEN_METROSTATION);
+
     }
 
-    public void setView(MetroCardOverviewPane view) {
-        this.metroCardOverviewPane = view;
+    public void setView(AdminView view) {
+        this.adminView = view;
     }
-
-
-
-
 
     public Collection<MetroCard> getMetroCardDatabase() {
         return getFacade().getMetroCardDatabase().getMetroCards().values();
@@ -43,6 +42,7 @@ public class AdminOverviewViewController implements Observer{
 
     @Override
     public void update(TreeMap<String, MetroCard> metroCards) {
-        metroCardOverviewPane.refresh(metroCards.values());
+        adminView.update();
+        System.out.println("Dees doet iets");
     }
 }

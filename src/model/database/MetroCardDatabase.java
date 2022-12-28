@@ -10,13 +10,13 @@ import java.util.*;
 public class MetroCardDatabase {
 
 
-    TreeMap<String, MetroCard> metroCards = new TreeMap<>();
-
+    public TreeMap<String, MetroCard> metroCards = new TreeMap<>();
     private static MetroCardDatabase metroCardDatabase;
+    public ArrayList<Integer> metrocardIDList = new ArrayList<>();
+
     private MetroCardDatabase(){
         load();
     }
-
 
     /** Singleton design pattern */
     public static MetroCardDatabase getInstance(){
@@ -33,13 +33,18 @@ public class MetroCardDatabase {
 
     public void load() {
         try {
-            //this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(LoadSaveStrategyEnum.TEXT_METROCARDS).load();
             this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(Setup.getFileFormat()).load();
+            System.out.println("database loaded");
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void addMetroCard(int kaartID, String maandJaarAankoop, int beschikbareRitten, int verbruikteRitten){
+        metroCards.put(String.valueOf(kaartID), new MetroCard(kaartID, maandJaarAankoop, beschikbareRitten, verbruikteRitten));
     }
 
     public void save(){
@@ -54,5 +59,23 @@ public class MetroCardDatabase {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public void setMetrocardIDList(){
+
+        Set<String> set = metroCards.keySet();
+
+        for(String key: set){
+            MetroCard metroCard = metroCards.get(key);
+            metrocardIDList.add(metroCard.getKaartID());
+        }
+
+        System.out.println("MetroCardIdList is set");
+    }
+
+    public ArrayList<Integer> getMetrocardIDlist(){
+        setMetrocardIDList();
+        System.out.println("IDS: " + metrocardIDList);
+        return metrocardIDList;
     }
 }

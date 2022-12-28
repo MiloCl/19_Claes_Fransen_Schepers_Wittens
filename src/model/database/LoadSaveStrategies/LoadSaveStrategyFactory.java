@@ -22,7 +22,7 @@ public class LoadSaveStrategyFactory<K,V> {
             Object dbObject = dbClass.getConstructor(LoadSaveStrategyEnum.class).newInstance(LoadSaveStrategyEnum.getEnumWithName(naam));
             fileInterface  = (LoadSaveStrategy) dbObject;
         }
-        catch (Exception ignored){}
+        catch (Exception ignored){ System.out.println("error createloadsavestrategy");}
         return fileInterface;
     }
 

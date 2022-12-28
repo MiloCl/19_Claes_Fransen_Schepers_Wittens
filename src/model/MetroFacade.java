@@ -11,10 +11,7 @@ public class MetroFacade implements Subject{
 
     private static MetroFacade facade;
     private final MetroCardDatabase metroCardDatabase;
-
     private final Map<MetroEventsEnum, ArrayList<Observer>> observers = new HashMap<>();
-
-
     private TreeMap<String, MetroCard> metroCards = new TreeMap<>();
 
     public MetroFacade() {
@@ -53,5 +50,9 @@ public class MetroFacade implements Subject{
         metroCardDatabase.load();
         metroCards = metroCardDatabase.getMetroCards();
         notifyObservers(MetroEventsEnum.OPEN_METROSTATION);
+    }
+
+    public ArrayList<Integer> getMetroCardIDList(){
+        return metroCardDatabase.getMetrocardIDlist();
     }
 }

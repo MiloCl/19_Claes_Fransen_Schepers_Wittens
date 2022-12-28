@@ -7,18 +7,19 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import model.MetroFacade;
+import model.domain.MetroCard;
 import view.panels.ControlCenterPane;
 import view.panels.MetroCardOverviewPane;
 import view.panels.SetupPane;
 
 
 public class AdminMainPane extends BorderPane {
-    public AdminMainPane(MetroFacade facade){
+/*    public AdminMainPane(MetroFacade facade){
         TabPane tabPane = new TabPane();
         //Tab spelVerloopTab = new Tab("Spelverloop");
         HBox panes = new HBox();
         HBox controlpane = new HBox();
-        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(facade.getMetroCardDatabase().getMetroCards().values());
+        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(new AdminOverviewViewController(facade));
         ControlCenterPane controlCenterPane = new ControlCenterPane();
 
         panes.getChildren().addAll(metroCardOverviewPane);
@@ -32,7 +33,7 @@ public class AdminMainPane extends BorderPane {
         tabPane.getTabs().add(setupTab);
         this.setCenter(tabPane);
 
-    }
+    }*/
 
     public AdminMainPane(AdminOverviewViewController adminOverviewViewController) {
         TabPane tabPane = new TabPane();
