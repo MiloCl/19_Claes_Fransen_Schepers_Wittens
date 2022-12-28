@@ -5,6 +5,7 @@ import model.MetroFacade;
 import model.domain.MetroCard;
 import view.MetroStationView;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class MetroStationViewController implements Observer{
@@ -21,8 +22,17 @@ public class MetroStationViewController implements Observer{
         return facade;
     }
 
+    public void setView(MetroStationView metroStationView) {
+        this.metroStationView = metroStationView;
+    }
+
     @Override
     public void update(TreeMap<String, MetroCard> metroCards) {
-
+        ArrayList<Integer> IDS = facade.getMetroCardIDList();
+        System.out.println("IDS: " + IDS + "(update methode in MetroStationViewController");
+        System.out.println("MetroStationView: " + metroStationView);
+        metroStationView.updateMetroCardIDList(IDS);
     }
+
+
 }

@@ -7,6 +7,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
+
 public class MetroStationView {
 	
 	private Stage stage = new Stage();
@@ -24,10 +26,11 @@ public class MetroStationView {
 		root.getChildren().add(metroStationPane);
 		stage.setScene(scene);
 		stage.sizeToScene();			
-		stage.show();		
+		stage.show();
+		metroStationViewController.setView(this); // controller.Observer
 	}
 
-	public void update() {
-		MetroStationPane.update(metroStationViewController);
+	public void updateMetroCardIDList(ArrayList<Integer> ids) {
+		MetroStationPane.updateMetroCardIDList(ids);
 	}
 }

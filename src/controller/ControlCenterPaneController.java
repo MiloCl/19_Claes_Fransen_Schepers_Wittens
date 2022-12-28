@@ -21,6 +21,10 @@ public class ControlCenterPaneController implements Observer {
         facade.openMetroStation();
     }
 
+    public void setView(AdminView view) {
+        this.adminView = view;
+    }
+
 
 
 

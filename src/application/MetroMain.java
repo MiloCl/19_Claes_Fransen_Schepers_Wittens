@@ -17,12 +17,13 @@ public class MetroMain extends Application {
 		MetroFacade facade = MetroFacade.getInstance();
 
 		AdminOverviewViewController adminOverviewViewController = new AdminOverviewViewController(facade);
-		MetroStationViewController metroStationViewController = new MetroStationViewController(facade);
-		MetroTicketViewController metroTicketViewController = new MetroTicketViewController(facade);
-		
 		AdminView adminView = new AdminView(adminOverviewViewController);
-		MetroTicketView metroTicketView = new MetroTicketView(metroTicketViewController);
+
+		MetroStationViewController metroStationViewController = new MetroStationViewController(facade);
 		MetroStationView metroStationView = new MetroStationView(metroStationViewController);
+
+		MetroTicketViewController metroTicketViewController = new MetroTicketViewController(facade);
+		MetroTicketView metroTicketView = new MetroTicketView(metroTicketViewController);
 	}
 	
 	public static void main(String[] args) {

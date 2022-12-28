@@ -14,6 +14,7 @@ public class MetroTicketView {
 		
 	public MetroTicketView(MetroTicketViewController metroTicketViewController){
 		this.metroTicketViewController = metroTicketViewController;
+
 		stage.setTitle("METROTICKET VIEW");
 		stage.initStyle(StageStyle.UTILITY);
 		stage.setX(5);
@@ -25,7 +26,9 @@ public class MetroTicketView {
 		stage.setScene(scene);
 		stage.sizeToScene();			
 		stage.show();
+
 		metroTicketViewController.setView(this); // controller.Observer
+
 	}
 
 	public void updateMetroCardIDList(ArrayList<Integer> ids) {

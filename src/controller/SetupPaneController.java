@@ -13,9 +13,6 @@ public class SetupPaneController implements Observer {
         Setup.setFileFormat(format);
     }
 
-    public void savePreferences(String format, String discount) {
-        Setup.setProperties(format, discount);
-    }
 
     public String getFileFormat() {
         return Setup.getFileFormat();

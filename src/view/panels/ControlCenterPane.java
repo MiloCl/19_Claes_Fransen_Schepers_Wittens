@@ -8,10 +8,10 @@ public class ControlCenterPane extends VBox {
 
     Button openMetroStation = new Button("Open Metro Station");
 
-    public ControlCenterPane() {
+    public ControlCenterPane(ControlCenterPaneController controlCenterPaneController) {
         this.getChildren().addAll(openMetroStation);
 
-        openMetroStation.setOnAction(e -> ControlCenterPaneController.openMetroStation());
+        openMetroStation.setOnAction(e -> controlCenterPaneController.openMetroStation());
     }
 
 }
