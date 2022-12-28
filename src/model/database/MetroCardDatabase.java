@@ -64,7 +64,7 @@ public class MetroCardDatabase {
     public void setMetrocardIDList(){
 
         Set<String> set = metroCards.keySet();
-
+        metrocardIDList.clear();
         for(String key: set){
             MetroCard metroCard = metroCards.get(key);
             metrocardIDList.add(metroCard.getKaartID());

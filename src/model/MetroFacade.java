@@ -53,6 +53,7 @@ public class MetroFacade implements Subject{
     }
 
     public ArrayList<Integer> getMetroCardIDList(){
+
         return metroCardDatabase.getMetrocardIDlist();
     }
 }
