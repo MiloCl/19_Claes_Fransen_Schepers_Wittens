@@ -30,6 +30,10 @@ public class MetroTicketViewController implements Observer {
         return metroTicketView;
     }
 
+    public void newMetroCard() {
+        facade.newMetroCard();
+    }
+
     @Override
     public void update(TreeMap<String, MetroCard> metroCards) {
         ArrayList<Integer> IDS = facade.getMetroCardIDList();
@@ -37,4 +41,6 @@ public class MetroTicketViewController implements Observer {
         System.out.println("MetroTicketView: " + metroTicketView);
         metroTicketView.updateMetroCardIDList(IDS);
     }
+
+
 }

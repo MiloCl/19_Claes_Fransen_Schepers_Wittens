@@ -15,6 +15,7 @@ public class MetroStationViewController implements Observer{
     public MetroStationViewController(MetroFacade facade) {
         this.facade = facade;
         facade.registerObserver(this, MetroEventsEnum.OPEN_METROSTATION);
+        facade.registerObserver(this, MetroEventsEnum.BUY_METROCARD);
     }
 
     public MetroFacade getFacade() {

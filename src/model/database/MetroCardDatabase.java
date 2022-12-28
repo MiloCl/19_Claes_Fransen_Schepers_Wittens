@@ -78,4 +78,12 @@ public class MetroCardDatabase {
         System.out.println("IDS: " + metrocardIDList);
         return metrocardIDList;
     }
+
+    public void newMetroCard() {
+        int kaartID = metroCards.size() + 1;
+        String maandJaarAankoop = "01-2021";
+        int beschikbareRitten = 10;
+        int verbruikteRitten = 0;
+        addMetroCard(kaartID, maandJaarAankoop, beschikbareRitten, verbruikteRitten);
+    }
 }
