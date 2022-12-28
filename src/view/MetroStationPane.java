@@ -20,9 +20,6 @@ public class MetroStationPane extends VBox {
 
 
     public MetroStationPane(MetroStationViewController metroStationViewController) {
-
-
-
         gate1 = new MetroGatePane(metroStationViewController);
         gate2 = new MetroGatePane(metroStationViewController);
         gate3 = new MetroGatePane(metroStationViewController);
@@ -32,7 +29,6 @@ public class MetroStationPane extends VBox {
         gates.getChildren().addAll(gate1, gate2, gate3);
 
         this.getChildren().addAll(gates);
-
     }
 
 

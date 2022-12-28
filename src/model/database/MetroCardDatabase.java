@@ -34,7 +34,7 @@ public class MetroCardDatabase {
     public void load() {
         try {
             this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(Setup.getFileFormat()).load();
-            System.out.println("database loaded");
+
 
         }
         catch (Exception e){
@@ -75,7 +75,6 @@ public class MetroCardDatabase {
 
     public ArrayList<Integer> getMetrocardIDlist(){
         setMetrocardIDList();
-        System.out.println("IDS: " + metrocardIDList);
         return metrocardIDList;
     }
 
@@ -85,6 +84,10 @@ public class MetroCardDatabase {
         int beschikbareRitten = 10;
         int verbruikteRitten = 0;
         addMetroCard(kaartID, maandJaarAankoop, beschikbareRitten, verbruikteRitten);
+    }
+
+    public MetroCard getMetroCard(int kaartID){
+        return metroCards.get(String.valueOf(kaartID));
     }
 
     public void addRides(Integer id, int rides) {

@@ -1,24 +1,20 @@
 package model.ticketPriceDecorator;
 
 public class Age64PlusDiscount extends TicketPriceDiscountDecorator {
-
+    double discount;
+    double price;
 
     public Age64PlusDiscount(TicketPrice ticketPrice) {
 
         super(ticketPrice);
-
+        price = ticketPrice.getPrice();
+        discount = TicketPriceDiscountEnum.getDiscountByName("Age 64 Plus Discount").getDiscount();
     }
 
-    public double getPrice() {
+    @Override
+    public double getPrice() { return price - discount; }
 
-        return ticketPrice.getPrice() - 0.5;
-
-    }
-
-    public String getPriceText() {
-
-        return ticketPrice.getPriceText() + " + 64+ Discount";
-
-    }
+    @Override
+    public String getPriceText() { return price + " - 0.15: 64+ Discount"; }
 }
 

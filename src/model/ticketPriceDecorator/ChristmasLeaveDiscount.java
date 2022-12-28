@@ -2,16 +2,20 @@ package model.ticketPriceDecorator;
 
 public class ChristmasLeaveDiscount extends TicketPriceDiscountDecorator {
 
+    double discount;
+    double price;
     public ChristmasLeaveDiscount(TicketPrice ticketPrice) {
         super(ticketPrice);
+        price = ticketPrice.getPrice();
+        discount = TicketPriceDiscountEnum.getDiscountByName("Christmas Leave Discount").getDiscount();
     }
 
-    public double getPrice() {
-        return ticketPrice.getPrice() - 0.1;
-    }
+    @Override
+    public double getPrice() {return price - discount; }
 
+    @Override
     public String getPriceText() {
-        return ticketPrice.getPriceText() + " + Christmas Leave Discount";
+        return price + " - 0.10: Christmas Leave Discount";
     }
 }
 

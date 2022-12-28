@@ -15,6 +15,10 @@ public abstract class TicketPrice{
         this.frequentTraveler = frequentTraveler;
     }
 
+    public TicketPrice() {
+
+    }
+
     public boolean getIs24Min(){
         return is24Min;
     }
@@ -41,10 +45,8 @@ public abstract class TicketPrice{
         this.isStudent = isStudent;
     }
 
-    public double getPrice(){
-        return 2.1;
-    }
-    public String getPriceText(){
-        return getPrice() + "€";
-    }
+    public abstract double getPrice();
+
+    public abstract String getPriceText();
+
 }

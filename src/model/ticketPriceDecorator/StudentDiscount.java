@@ -1,17 +1,21 @@
 package model.ticketPriceDecorator;
 
 public class StudentDiscount extends TicketPriceDiscountDecorator {
+    double discount;
+    double price;
 
     public StudentDiscount(TicketPrice ticketPrice) {
         super(ticketPrice);
+        price = ticketPrice.getPrice();
+        discount = TicketPriceDiscountEnum.getDiscountByName("Student Discount").getDiscount();
     }
 
-    public double getPrice() {
-        return ticketPrice.getPrice() - 0.25;
-    }
+    @Override
+    public double getPrice() { return price - discount; }
 
+    @Override
     public String getPriceText() {
-        return ticketPrice.getPriceText() + " + Student Discount";
+        return price + " -0.25: Student Discount";
     }
 }
 

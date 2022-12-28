@@ -6,13 +6,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MetroTicketView {
 	private Stage stage = new Stage();
 	MetroTicketViewController metroTicketViewController;
 		
-	public MetroTicketView(MetroTicketViewController metroTicketViewController){
+	public MetroTicketView(MetroTicketViewController metroTicketViewController) throws IOException {
 		this.metroTicketViewController = metroTicketViewController;
 
 		stage.setTitle("METROTICKET VIEW");
@@ -28,12 +29,14 @@ public class MetroTicketView {
 		stage.show();
 
 		metroTicketViewController.setView(this); // controller.Observer
+		metroTicketViewController.setPane(metroTicketPane); // controller.Observer
 
 	}
 
 	public void updateMetroCardIDList(ArrayList<Integer> ids) {
 		MetroTicketPane.updateMetroCardIDList(ids);
 	}
+
 
 
 

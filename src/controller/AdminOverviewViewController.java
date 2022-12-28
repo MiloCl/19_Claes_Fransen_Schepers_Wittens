@@ -45,6 +45,5 @@ public class AdminOverviewViewController implements Observer{
     @Override
     public void update(TreeMap<String, MetroCard> metroCards) {
         adminView.update();
-        System.out.println("Dees doet iets");
     }
 }

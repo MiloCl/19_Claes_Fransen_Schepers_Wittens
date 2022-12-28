@@ -11,15 +11,13 @@ import java.util.ArrayList;
 
 public class TicketPriceFactory {
     public ArrayList<String> activeDiscounts;
+    TicketPrice ticketPrice;
+    String ticketPriceDescription;
 
-    public TicketPriceFactory(TicketPrice ticketPrice) {
+    public TicketPriceFactory() {
 
     }
 
-    public static TicketPrice createTicketPrice(boolean is24Min, boolean is64Plus, MetroCard metroCard,boolean isStudent) {
-        TicketPrice ticketPrice = null;
-        return ticketPrice;
-    }
 
     public ArrayList<String> getActiveDiscounts() throws IOException {
         try {
@@ -47,25 +45,29 @@ public class TicketPriceFactory {
     }
 
     public  TicketPrice createTicketPrice(boolean is24Min, boolean is64Plus ,boolean isStudent, MetroCard metroCard) throws IOException {
-        TicketPrice ticketPrice = null;
+        ticketPrice = new BasicTicketPrice(is24Min, is64Plus, isStudent, metroCard);
+        ticketPriceDescription = ticketPrice.getPriceText();
 
         activeDiscounts = getActiveDiscounts();
 
         for(String discount : activeDiscounts) {
             if(discount.equals("frequentTravellerDiscount") && metroCard.getAantalVerbruikteRitten() >= 50) {
                 ticketPrice = new FrequentTravellerDiscount(ticketPrice);
+                ticketPriceDescription += " " + ticketPrice.getPriceText();
             }
             if(discount.equals("studentDiscount") && isStudent) {
                 ticketPrice = new StudentDiscount(ticketPrice);
+                ticketPriceDescription += " " + ticketPrice.getPriceText();
             }
             if(discount.equals("age64plusDiscount") && is64Plus) {
                 ticketPrice = new Age64PlusDiscount(ticketPrice);
+                ticketPriceDescription += " " + ticketPrice.getPriceText();
             }
             if(discount.equals("christmasLeaveDiscount")) {
                 ticketPrice = new ChristmasLeaveDiscount(ticketPrice);
+                ticketPriceDescription += " " + ticketPrice.getPriceText();
             }
         }
-       
         return ticketPrice;
     }
 

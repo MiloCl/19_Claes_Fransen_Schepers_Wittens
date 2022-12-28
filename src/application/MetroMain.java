@@ -10,10 +10,12 @@ import view.AdminView;
 import view.MetroStationView;
 import view.MetroTicketView;
 
+import java.io.IOException;
+
 
 public class MetroMain extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		MetroFacade facade = MetroFacade.getInstance();
 
 		AdminOverviewViewController adminOverviewViewController = new AdminOverviewViewController(facade);
