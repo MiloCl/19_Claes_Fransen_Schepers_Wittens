@@ -12,6 +12,7 @@ public class MetroCardDatabase {
 
     public TreeMap<String, MetroCard> metroCards = new TreeMap<>();
     private static MetroCardDatabase metroCardDatabase;
+    public ArrayList<Integer> metrocardIDList = new ArrayList<>();
 
     private MetroCardDatabase(){
         load();
@@ -33,6 +34,8 @@ public class MetroCardDatabase {
     public void load() {
         try {
             this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(Setup.getFileFormat()).load();
+            System.out.println("database loaded");
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -56,5 +59,23 @@ public class MetroCardDatabase {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public void setMetrocardIDList(){
+
+        Set<String> set = metroCards.keySet();
+
+        for(String key: set){
+            MetroCard metroCard = metroCards.get(key);
+            metrocardIDList.add(metroCard.getKaartID());
+        }
+
+        System.out.println("MetroCardIdList is set");
+    }
+
+    public ArrayList<Integer> getMetrocardIDlist(){
+        setMetrocardIDList();
+        System.out.println("IDS: " + metrocardIDList);
+        return metrocardIDList;
     }
 }

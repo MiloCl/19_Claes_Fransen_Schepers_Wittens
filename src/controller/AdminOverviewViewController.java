@@ -28,10 +28,6 @@ public class AdminOverviewViewController implements Observer{
         this.adminView = view;
     }
 
-
-
-
-
     public Collection<MetroCard> getMetroCardDatabase() {
         return getFacade().getMetroCardDatabase().getMetroCards().values();
     }
