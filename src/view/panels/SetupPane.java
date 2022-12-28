@@ -33,7 +33,13 @@ public class SetupPane extends VBox {
             //setupPaneController.saveFileFormat(fileFormat.getSelectionModel().getSelectedItem());
             setupPaneController.saveSettings(fileFormat.getSelectionModel().getSelectedItem(), age64PlusDiscount.isSelected(), christmasLeaveDiscount.isSelected(), studentDiscount.isSelected(), frequentTravellerDiscount.isSelected());
         });
+
+        //Values uit proerties laten zien
         fileFormat.setValue(setupPaneController.getFileFormat());
+        age64PlusDiscount.setSelected(setupPaneController.getAge64PlusDiscount());
+        christmasLeaveDiscount.setSelected(setupPaneController.getChristmasLeaveDiscount());
+        studentDiscount.setSelected(setupPaneController.getStudentDiscount());
+        frequentTravellerDiscount.setSelected(setupPaneController.getFrequentTravellerDiscount());
 
         //intro text
         BorderPane introw = new BorderPane();

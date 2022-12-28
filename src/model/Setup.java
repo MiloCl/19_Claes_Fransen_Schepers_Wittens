@@ -64,4 +64,52 @@ public class Setup {
             io.printStackTrace();
         }
     }
+
+    public static boolean getAge64PlusDiscount() {
+        try (InputStream input = new FileInputStream("src/bestanden/settings.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            System.out.println("age64PlusDiscountSelected: " + prop.getProperty("age64PlusDiscountSelected"));
+            return Boolean.parseBoolean(prop.getProperty("age64PlusDiscountSelected"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+    }
+        return false;
+    }
+
+    public static boolean getChristmasLeaveDiscount() {
+        try (InputStream input = new FileInputStream("src/bestanden/settings.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            System.out.println("christmasLeaveDiscountSelected: " + prop.getProperty("christmasLeaveDiscountSelected"));
+            return Boolean.parseBoolean(prop.getProperty("christmasLeaveDiscountSelected"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+    }
+        return false;
+    }
+
+    public static boolean getStudentDiscount() {
+        try (InputStream input = new FileInputStream("src/bestanden/settings.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            System.out.println("studentDiscountSelected: " + prop.getProperty("studentDiscountSelected"));
+            return Boolean.parseBoolean(prop.getProperty("studentDiscountSelected"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+    }
+        return false;
+    }
+
+    public static boolean getFrequentTravellerDiscount() {
+        try (InputStream input = new FileInputStream("src/bestanden/settings.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            System.out.println("frequentTravellerDiscountSelected: " + prop.getProperty("frequentTravellerDiscountSelected"));
+            return Boolean.parseBoolean(prop.getProperty("frequentTravellerDiscountSelected"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+    }
+        return false;
+    }
 }

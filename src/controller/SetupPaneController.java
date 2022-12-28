@@ -32,4 +32,20 @@ public class SetupPaneController implements Observer {
     public void saveSettings(String fileFormat, boolean age64PlusDiscountSelected, boolean christmasLeaveDiscountSelected, boolean studentDiscountSelected, boolean frequentTravellerDiscountSelected) {
         Setup.saveSettings(fileFormat, age64PlusDiscountSelected, christmasLeaveDiscountSelected, studentDiscountSelected, frequentTravellerDiscountSelected);
     }
+
+    public boolean getAge64PlusDiscount() {
+        return Setup.getAge64PlusDiscount();
+    }
+
+    public boolean getChristmasLeaveDiscount() {
+        return Setup.getChristmasLeaveDiscount();
+    }
+
+    public boolean getStudentDiscount() {
+        return Setup.getStudentDiscount();
+    }
+
+    public boolean getFrequentTravellerDiscount() {
+        return Setup.getFrequentTravellerDiscount();
+    }
 }
