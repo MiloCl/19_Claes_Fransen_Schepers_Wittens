@@ -24,4 +24,12 @@ public class SetupPaneController implements Observer {
     public void update(TreeMap<String, MetroCard> metroCards) {
 
     }
+
+    public void saveDiscounts(boolean age64PlusDiscountSelected, boolean christmasLeaveDiscountSelected, boolean studentDiscountSelected, boolean frequentTravellerDiscountSelected) {
+        Setup.saveDiscounts(age64PlusDiscountSelected, christmasLeaveDiscountSelected, studentDiscountSelected, frequentTravellerDiscountSelected);
+    }
+
+    public void saveSettings(String fileFormat, boolean age64PlusDiscountSelected, boolean christmasLeaveDiscountSelected, boolean studentDiscountSelected, boolean frequentTravellerDiscountSelected) {
+        Setup.saveSettings(fileFormat, age64PlusDiscountSelected, christmasLeaveDiscountSelected, studentDiscountSelected, frequentTravellerDiscountSelected);
+    }
 }

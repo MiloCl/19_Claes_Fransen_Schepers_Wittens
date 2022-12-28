@@ -5,6 +5,7 @@ import controller.SetupPaneController;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -16,15 +17,21 @@ public class SetupPane extends VBox {
     Label intro = new Label("Change settings");
     Label select = new Label("Select here the type of file structure");
     ChoiceBox<String> fileFormat = new ChoiceBox<>(FXCollections.observableArrayList("Excel", "Text"));
+    Label discounts = new Label("Select Discounts");
+    CheckBox age64PlusDiscount = new CheckBox("Age 64+ discount");
+    CheckBox christmasLeaveDiscount = new CheckBox("Christmas leave discount");
+    CheckBox studentDiscount = new CheckBox("Student discount");
+    CheckBox frequentTravellerDiscount = new CheckBox("Frequent traveller discount");
     Button saveButton = new Button("save");
-    ChoiceBox<String> itemFirst;
+
 
     public SetupPane(SetupPaneController setupPaneController) {
 
         //action to save button
         saveButton.setOnAction(event -> {
             System.out.println("save File Format");
-            setupPaneController.saveFileFormat(fileFormat.getSelectionModel().getSelectedItem());
+            //setupPaneController.saveFileFormat(fileFormat.getSelectionModel().getSelectedItem());
+            setupPaneController.saveSettings(fileFormat.getSelectionModel().getSelectedItem(), age64PlusDiscount.isSelected(), christmasLeaveDiscount.isSelected(), studentDiscount.isSelected(), frequentTravellerDiscount.isSelected());
         });
         fileFormat.setValue(setupPaneController.getFileFormat());
 
@@ -45,6 +52,6 @@ public class SetupPane extends VBox {
 
 
         //add all to root
-        this.getChildren().addAll(introw, fileReading, saveButton);
+        this.getChildren().addAll(introw, fileReading, discounts, age64PlusDiscount, christmasLeaveDiscount, studentDiscount, frequentTravellerDiscount, saveButton);
     }
 }

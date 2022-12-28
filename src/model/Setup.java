@@ -35,6 +35,33 @@ public class Setup {
             prop.store(output, null);
         } catch (IOException io) {
             io.printStackTrace();
+        }
     }
+
+    public static void saveDiscounts(boolean age64PlusDiscountSelected, boolean christmasLeaveDiscountSelected, boolean studentDiscountSelected, boolean frequentTravellerDiscountSelected) {
+        try (OutputStream output = new FileOutputStream("src/bestanden/settings.properties")) {
+            Properties prop = new Properties();
+            prop.setProperty("age64PlusDiscountSelected", String.valueOf(age64PlusDiscountSelected));
+            prop.setProperty("christmasLeaveDiscountSelected", String.valueOf(christmasLeaveDiscountSelected));
+            prop.setProperty("studentDiscountSelected", String.valueOf(studentDiscountSelected));
+            prop.setProperty("frequentTravellerDiscountSelected", String.valueOf(frequentTravellerDiscountSelected));
+            prop.store(output, null);
+        } catch (IOException io) {
+            io.printStackTrace();
+        }
+    }
+
+    public static void saveSettings(String fileFormat, boolean age64PlusDiscountSelected, boolean christmasLeaveDiscountSelected, boolean studentDiscountSelected, boolean frequentTravellerDiscountSelected) {
+        try (OutputStream output = new FileOutputStream("src/bestanden/settings.properties")) {
+            Properties prop = new Properties();
+            prop.setProperty("FileFormat", fileFormat);
+            prop.setProperty("age64PlusDiscountSelected", String.valueOf(age64PlusDiscountSelected));
+            prop.setProperty("christmasLeaveDiscountSelected", String.valueOf(christmasLeaveDiscountSelected));
+            prop.setProperty("studentDiscountSelected", String.valueOf(studentDiscountSelected));
+            prop.setProperty("frequentTravellerDiscountSelected", String.valueOf(frequentTravellerDiscountSelected));
+            prop.store(output, null);
+        } catch (IOException io) {
+            io.printStackTrace();
+        }
     }
 }
