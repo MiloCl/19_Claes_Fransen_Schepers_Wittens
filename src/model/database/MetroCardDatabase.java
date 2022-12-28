@@ -86,4 +86,9 @@ public class MetroCardDatabase {
         int verbruikteRitten = 0;
         addMetroCard(kaartID, maandJaarAankoop, beschikbareRitten, verbruikteRitten);
     }
+
+    public void addRides(Integer id, int rides) {
+        MetroCard metroCard = metroCards.get(String.valueOf(id));
+        metroCard.setBeschikbareRitten(metroCard.getBeschikbareRitten() + rides);
+    }
 }

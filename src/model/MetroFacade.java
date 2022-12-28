@@ -61,4 +61,9 @@ public class MetroFacade implements Subject{
         metroCardDatabase.newMetroCard();
         notifyObservers(MetroEventsEnum.BUY_METROCARD);
     }
+
+    public void addRides(Integer id, int rides) {
+        metroCardDatabase.addRides(id, rides);
+        notifyObservers(MetroEventsEnum.ADD_RIDES);
+    }
 }
