@@ -14,4 +14,13 @@ public enum TicketPriceDiscountEnum {
         this.name = name;
         this.discount = discount;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
 }
