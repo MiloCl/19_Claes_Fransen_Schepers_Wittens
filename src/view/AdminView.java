@@ -6,13 +6,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import view.panels.OverviewPane;
 
 public class AdminView{
 
 	private Stage stage = new Stage();
-		
-	public AdminView(AdminOverviewViewController adminOverviewViewController){
+	AdminOverviewViewController adminOverviewViewController;
 
+
+	public AdminView(AdminOverviewViewController adminOverviewViewController){
+		this.adminOverviewViewController = adminOverviewViewController;
 		stage.setTitle("ADMIN VIEW");
 		stage.initStyle(StageStyle.UTILITY);
 		stage.setX(660);
@@ -26,5 +29,10 @@ public class AdminView{
 		stage.setScene(scene);
 		stage.sizeToScene();			
 		stage.show();
+		adminOverviewViewController.setView(this); // controller.Observer
+
+	}
+	public void update() {
+		OverviewPane.update(adminOverviewViewController);
 	}
 }

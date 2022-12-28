@@ -10,13 +10,12 @@ import java.util.*;
 public class MetroCardDatabase {
 
 
-    TreeMap<String, MetroCard> metroCards = new TreeMap<>();
-
+    public TreeMap<String, MetroCard> metroCards = new TreeMap<>();
     private static MetroCardDatabase metroCardDatabase;
+
     private MetroCardDatabase(){
         load();
     }
-
 
     /** Singleton design pattern */
     public static MetroCardDatabase getInstance(){
@@ -33,13 +32,16 @@ public class MetroCardDatabase {
 
     public void load() {
         try {
-            //this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(LoadSaveStrategyEnum.TEXT_METROCARDS).load();
             this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(Setup.getFileFormat()).load();
         }
         catch (Exception e){
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void addMetroCard(int kaartID, String maandJaarAankoop, int beschikbareRitten, int verbruikteRitten){
+        metroCards.put(String.valueOf(kaartID), new MetroCard(kaartID, maandJaarAankoop, beschikbareRitten, verbruikteRitten));
     }
 
     public void save(){
