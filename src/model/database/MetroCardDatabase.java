@@ -34,8 +34,6 @@ public class MetroCardDatabase {
     public void load() {
         try {
             this.metroCards = LoadSaveStrategyFactory.createLoadSaveStrategy(Setup.getFileFormat()).load();
-
-
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -47,7 +45,7 @@ public class MetroCardDatabase {
         metroCards.put(String.valueOf(kaartID), new MetroCard(kaartID, maandJaarAankoop, beschikbareRitten, verbruikteRitten));
     }
 
-    public void save(){
+    /*public void save(){
         try {
             FileWriter myWriter = new FileWriter("src/bestanden/metrocards.txt");
             for (MetroCard metroCard: metroCards.values()) {
@@ -59,7 +57,17 @@ public class MetroCardDatabase {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }*/
+
+    public void save() {
+        try {
+           LoadSaveStrategyFactory.createLoadSaveStrategy(Setup.getFileFormat()).save();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
+
 
     public void setMetrocardIDList(){
 

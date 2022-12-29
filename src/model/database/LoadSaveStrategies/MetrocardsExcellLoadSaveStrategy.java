@@ -31,6 +31,6 @@ public class MetrocardsExcellLoadSaveStrategy extends ExcellLoadSaveTemplate<Str
 
     @Override
     public void save() {
-
+        super.save();
     }
 }
