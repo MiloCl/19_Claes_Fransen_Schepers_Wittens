@@ -9,6 +9,7 @@ public class MetroGate {
 
     int id;
     MetroGateState state;
+    int nrOfScans;
 
     private MetroGateState open;
     private MetroGateState closed;
@@ -34,6 +35,7 @@ public class MetroGate {
         closed = new Closed(this);
         inactive = new Inactive(this);
         setState(inactive);
+        this.nrOfScans = 0;
     }
 
     public void setState(MetroGateState state) {
@@ -47,6 +49,11 @@ public class MetroGate {
 
     public void scanCard() {
         state.scanMetroCard();
+        nrOfScans++;
+    }
+
+    public int getNrOfScans() {
+        return nrOfScans;
     }
 
     public void walkThroughGate() { state.walkThroughGate(); }

@@ -35,4 +35,8 @@ public class ControlCenterGatePane extends VBox {
             this.setStyle("-fx-background-color: lightgreen");
         }
     }
+
+    public void updateNrOfCardsScanned(int nrOfScans) {
+        nrOfScannedCards.setText(Integer.toString(nrOfScans));
+    }
 }
