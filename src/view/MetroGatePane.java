@@ -14,7 +14,7 @@ public class MetroGatePane extends VBox {
     int gateID;
     Label gateNr = new Label();
     Label gateIDLabel = new Label("ID: ");
-    static ChoiceBox<Integer> metroCardIds = new ChoiceBox<>();
+    ChoiceBox<Integer> metroCardIds = new ChoiceBox<>();
     Button scanCard = new Button("Scan Card");
     Button walkTrough = new Button("Walk Through");
     Label status = new Label("Status: ");
@@ -25,9 +25,8 @@ public class MetroGatePane extends VBox {
         scanCard.setOnAction(e -> metroStationViewController.scanCard(gateID, metroCardIds.getValue()));
     }
 
-    public static void updateMetroCardIDList(ArrayList<Integer> ids) {
+    public void updateMetroCardIDList(ArrayList<Integer> ids) {
         metroCardIds.setItems(FXCollections.observableArrayList(ids));
-
     }
 
     public void updateStatus(String status) {
