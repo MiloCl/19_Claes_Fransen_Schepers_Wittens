@@ -11,14 +11,17 @@ import java.util.ArrayList;
 
 public class MetroGatePane extends VBox {
 
-    Label gateID = new Label("ID: ");
+    int gateID;
+    Label gateNr = new Label();
+    Label gateIDLabel = new Label("ID: ");
     static ChoiceBox<Integer> metroCardIds = new ChoiceBox<>();
     Button scanCard = new Button("Scan Card");
     Button walkTrough = new Button("Walk Through");
     Label status = new Label("Status: ");
 
     public MetroGatePane(MetroStationViewController metroStationViewController) {
-        this.getChildren().addAll(gateID ,metroCardIds, scanCard, walkTrough, status);
+        metroCardIds.show();
+        this.getChildren().addAll(gateNr, gateIDLabel ,metroCardIds, scanCard, walkTrough, status);
     }
 
     public static void updateMetroCardIDList(ArrayList<Integer> ids) {

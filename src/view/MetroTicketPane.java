@@ -30,7 +30,7 @@ public class MetroTicketPane extends VBox {
         addRides.setOnAction(e ->
         {
             try {
-                priceCalculation.setText(metroTicketViewController.addRides(age64Plus.isSelected(), student.isSelected(), Integer.parseInt(numberOfRides.getText())));
+                priceCalculation.setText("Total price: " + metroTicketViewController.addRides(age64Plus.isSelected(), student.isSelected(), Integer.parseInt(numberOfRides.getText())));
                 priceDescription.setText(metroTicketViewController.addDescription(age64Plus.isSelected(), student.isSelected()));
                 this.getChildren().addAll(confirm, priceCalculation, priceDescription);
                 confirm.setOnAction(event -> metroTicketViewController.confirm(metroCardIdsChoiceBox.getValue(), Integer.parseInt(numberOfRides.getText())));

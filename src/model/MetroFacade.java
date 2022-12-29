@@ -3,6 +3,7 @@ package model;
 import model.database.MetroCardDatabase;
 import model.domain.MetroCard;
 import controller.Observer;
+import model.domain.MetroStation;
 import model.ticketPriceDecorator.TicketPrice;
 import model.ticketPriceDecorator.TicketPriceFactory;
 
@@ -19,10 +20,13 @@ public class MetroFacade implements Subject{
     private final Map<MetroEventsEnum, ArrayList<Observer>> observers = new HashMap<>();
     private TreeMap<String, MetroCard> metroCards = new TreeMap<>();
     private TicketPriceFactory ticketPriceFactory = new TicketPriceFactory();
+    private MetroStation metroStation;
 
 
     public MetroFacade() {
         this.metroCardDatabase = MetroCardDatabase.getInstance();
+        this.metroStation = new MetroStation();
+
     }
     public static MetroFacade getInstance(){
         if (facade == null) {

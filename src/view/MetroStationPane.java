@@ -24,8 +24,17 @@ public class MetroStationPane extends VBox {
         gate2 = new MetroGatePane(metroStationViewController);
         gate3 = new MetroGatePane(metroStationViewController);
 
+        gate1.gateNr.setText("Gate 1");
+        gate2.gateNr.setText("Gate 2");
+        gate3.gateNr.setText("Gate 3");
+
+        gate1.gateID = 1;
+        gate2.gateID = 2;
+        gate3.gateID = 3;
+
         HBox gates = new HBox();
-        gates.setSpacing(10);
+
+        gates.setSpacing(20);
         gates.getChildren().addAll(gate1, gate2, gate3);
 
         this.getChildren().addAll(gates);
