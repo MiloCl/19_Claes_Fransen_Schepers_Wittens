@@ -11,19 +11,19 @@ public abstract class MetroGateState {
     }
     
     public void activateGate() {
-        throw new IllegalStateException("Deze actie is niet geldig in de staat waarin de gate zich bevindt.");
+        throw new IllegalStateException("Invalid action for current state");
     }
     
     public void deactivateGate() {
-        throw new IllegalStateException("Deze actie is niet geldig in de staat waarin de gate zich bevindt.");
+        throw new IllegalStateException("Invalid action for current state");
     }
     
     public void walkThroughGate() {
-        throw new IllegalStateException("Deze actie is niet geldig in de staat waarin de gate zich bevindt.");
+        throw new IllegalStateException("Invalid action for current state");
     }
     
     public void scanMetroCard() {
-        throw new IllegalStateException("Deze actie is niet geldig in de staat waarin de gate zich bevindt.");
+        throw new IllegalStateException("Invalid action for current state");
     }
     
 }

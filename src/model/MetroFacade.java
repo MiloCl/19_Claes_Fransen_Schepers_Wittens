@@ -100,11 +100,24 @@ public class MetroFacade implements Subject{
 
 
     public void scanCard(int gateID, Integer cardID) {
-        if(scanCardPossible(cardID)){
-            metroStation.scanCard(gateID, cardID);
-            cardScanned(cardID);
-            notifyObservers(MetroEventsEnum.SCAN_METROGATE);
+        MetroGate metroGate = metroStation.getMetroGate(gateID - 1);
+
+        if(metroGate.getStateAsString().equals("Inactive")) {
+            errors.add("Gate " + gateID + " :someone tried to scan card at this inactive gate");
+            notifyObservers(MetroEventsEnum.ALERT);
+
+        } else {
+            if(cardID == null) {
+                throw new IllegalArgumentException("Please select a card");
+            }
+            notifyObservers(MetroEventsEnum.METROCARD_SCANNED);
+            if(scanCardPossible(cardID)){
+                metroStation.scanCard(gateID, cardID);
+                cardScanned(cardID);
+                notifyObservers(MetroEventsEnum.SCAN_METROGATE);
+            } else throw new IllegalArgumentException("No rides left on this card");
         }
+
     }
 
     public void walkThroughGate(int gateID) {
@@ -124,6 +137,7 @@ public class MetroFacade implements Subject{
     }
 
     private boolean scanCardPossible(Integer cardID) {
+
         MetroCard metroCard = metroCardDatabase.getMetroCard(cardID);
         if(metroCard.getBeschikbareRitten() >= 1){
             return true;
@@ -133,6 +147,21 @@ public class MetroFacade implements Subject{
 
     public ArrayList<MetroGate> getMetroGates() {
         return metroStation.getMetroGates();
+    }
+
+    public void activateGate(int gateID) {
+        metroStation.activateGate(gateID);
+        notifyObservers(MetroEventsEnum.ACTIVATE_METROGATE);
+    }
+
+    public void deactivateGate(int gateID) {
+        metroStation.deactivateGate(gateID);
+        notifyObservers(MetroEventsEnum.DEACTIVATE_METROGATE);
+    }
+
+    public ArrayList<String> getErrors() {
+        System.out.println("errors returned from facade: " + errors);
+        return errors;
     }
 
     /*public TicketPrice createTicketPrice() {

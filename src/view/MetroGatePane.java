@@ -18,13 +18,20 @@ public class MetroGatePane extends VBox {
     Button scanCard = new Button("Scan Card");
     Button walkTrough = new Button("Walk Through");
     Label status = new Label("Status: ");
+    Label error = new Label();
 
     public MetroGatePane(MetroStationViewController metroStationViewController) {
         metroCardIds.show();
-        this.getChildren().addAll(gateNr, gateIDLabel ,metroCardIds, scanCard, walkTrough, status);
-        scanCard.setOnAction(e -> {
-            metroStationViewController.scanCard(gateID, metroCardIds.getValue());
-        });
+        this.getChildren().addAll(gateNr, gateIDLabel ,metroCardIds, scanCard, walkTrough, status, error);
+        error.setStyle("-fx-text-fill: red");
+            scanCard.setOnAction(e -> {
+                try {
+                    metroStationViewController.scanCard(gateID, metroCardIds.getValue());
+                } catch (Exception exception) {
+                    System.out.println("Catch uitgevoerd");
+                    error.setText("Error: " + exception.getMessage());
+                }
+            });
 
         walkTrough.setOnAction(e -> {
             metroStationViewController.walkThroughGate(gateID);
@@ -37,5 +44,10 @@ public class MetroGatePane extends VBox {
 
     public void updateStatus(String status) {
         this.status.setText("Status: " + status);
+        if(status.equals("Inactive")) {
+            this.setStyle("-fx-background-color: orange");
+        } else {
+            this.setStyle("-fx-background-color: lightgreen");
+        }
     }
 }

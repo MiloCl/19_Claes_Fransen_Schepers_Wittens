@@ -33,7 +33,7 @@ public class MetroGate {
         open = new Open(this);
         closed = new Closed(this);
         inactive = new Inactive(this);
-        setState(closed);
+        setState(inactive);
     }
 
     public void setState(MetroGateState state) {
@@ -52,6 +52,14 @@ public class MetroGate {
     public void walkThroughGate() { state.walkThroughGate(); }
     public int getGateID() {
         return this.id;
+    }
+
+    public void activateGate() {
+        state.activateGate();
+    }
+
+    public void deactivateGate() {
+        state.deactivateGate();
     }
 
 

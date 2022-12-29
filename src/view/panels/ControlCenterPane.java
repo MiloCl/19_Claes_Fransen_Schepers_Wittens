@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import model.domain.MetroGate;
+
+import java.util.ArrayList;
 
 public class ControlCenterPane extends VBox {
 
@@ -12,7 +15,7 @@ public class ControlCenterPane extends VBox {
     static ControlCenterGatePane gate2;
     static ControlCenterGatePane gate3;
 
-    Label alerts = new Label("Alerts: ");
+    static Label alerts = new Label("Alerts: \n");
 
     Button openMetroStation = new Button("Open Metro Station");
 

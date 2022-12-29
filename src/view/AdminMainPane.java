@@ -36,31 +36,33 @@ public class AdminMainPane extends BorderPane {
 
     }*/
 
-    public AdminMainPane(AdminOverviewViewController adminOverviewViewController) {
-        TabPane tabPane = new TabPane();
-        HBox overviewPane = new HBox();
-        HBox controlPane = new HBox();
-        HBox setup = new HBox();
+    public AdminMainPane(AdminOverviewViewController adminOverviewViewController, ControlCenterPaneController controlCenterPaneController) {
+        {
+            TabPane tabPane = new TabPane();
+            HBox overviewPane = new HBox();
+            HBox controlPane = new HBox();
+            HBox setup = new HBox();
 
-        MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(adminOverviewViewController);
+            MetroCardOverviewPane metroCardOverviewPane = new MetroCardOverviewPane(adminOverviewViewController);
 
-        ControlCenterPaneController controlCenterPaneController = new ControlCenterPaneController();
-        ControlCenterPane controlCenterPane = new ControlCenterPane(controlCenterPaneController);
 
-        SetupPaneController setupPaneController = new SetupPaneController();
-        SetupPane setupPane = new SetupPane(setupPaneController);
+            ControlCenterPane controlCenterPane = new ControlCenterPane(controlCenterPaneController);
 
-        overviewPane.getChildren().addAll(metroCardOverviewPane);
-        controlPane.getChildren().addAll(controlCenterPane);
-        setup.getChildren().addAll(setupPane);
-        Tab controlCenterTab = new Tab("Control Center",controlPane);
-        Tab metroCardOverviewTab = new Tab("Metro Card Overview",overviewPane);
-        Tab setupTab = new Tab("Setup",setup);
+            SetupPaneController setupPaneController = new SetupPaneController();
+            SetupPane setupPane = new SetupPane(setupPaneController);
 
-        tabPane.getTabs().add(controlCenterTab);
-        tabPane.getTabs().add(metroCardOverviewTab);
-        tabPane.getTabs().add(setupTab);
-        this.setCenter(tabPane);
+            overviewPane.getChildren().addAll(metroCardOverviewPane);
+            controlPane.getChildren().addAll(controlCenterPane);
+            setup.getChildren().addAll(setupPane);
+            Tab controlCenterTab = new Tab("Control Center", controlPane);
+            Tab metroCardOverviewTab = new Tab("Metro Card Overview", overviewPane);
+            Tab setupTab = new Tab("Setup", setup);
 
+            tabPane.getTabs().add(controlCenterTab);
+            tabPane.getTabs().add(metroCardOverviewTab);
+            tabPane.getTabs().add(setupTab);
+            this.setCenter(tabPane);
+
+        }
     }
 }

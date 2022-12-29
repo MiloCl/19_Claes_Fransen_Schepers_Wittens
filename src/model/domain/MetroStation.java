@@ -39,4 +39,14 @@ public class MetroStation {
         MetroGate metroGate = metroGates.get(gateID - 1);
         metroGate.walkThroughGate();
     }
+
+    public void activateGate(int gateID) {
+        MetroGate metroGate = metroGates.get(gateID - 1);
+        metroGate.activateGate();
+    }
+
+    public void deactivateGate(int gateID) {
+        MetroGate metroGate = metroGates.get(gateID - 1);
+        metroGate.deactivateGate();
+    }
 }

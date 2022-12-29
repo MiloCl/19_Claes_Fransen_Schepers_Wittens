@@ -1,5 +1,6 @@
 package controller;
 
+import model.MetroEventsEnum;
 import model.MetroFacade;
 import model.database.MetroCardDatabase;
 import model.domain.MetroCard;
@@ -25,13 +26,16 @@ public class ControlCenterPaneController implements Observer {
         this.adminView = view;
     }
 
-
-
-
     @Override
     public void update(TreeMap<String, MetroCard> metroCards) {
 
     }
 
+    public void activateGate(int gateID) {
+        facade.activateGate(gateID);
+    }
 
+    public void deactivateGate(int gateID) {
+        facade.deactivateGate(gateID);
+    }
 }

@@ -1,6 +1,7 @@
 package application;
 	
 import controller.AdminOverviewViewController;
+import controller.ControlCenterPaneController;
 import controller.MetroStationViewController;
 import controller.MetroTicketViewController;
 import javafx.application.Application;
@@ -19,7 +20,8 @@ public class MetroMain extends Application {
 		MetroFacade facade = MetroFacade.getInstance();
 
 		AdminOverviewViewController adminOverviewViewController = new AdminOverviewViewController(facade);
-		AdminView adminView = new AdminView(adminOverviewViewController);
+		ControlCenterPaneController controlCenterPaneController = new ControlCenterPaneController(facade);
+		AdminView adminView = new AdminView(adminOverviewViewController, controlCenterPaneController);
 
 		MetroStationViewController metroStationViewController = new MetroStationViewController(facade);
 		MetroStationView metroStationView = new MetroStationView(metroStationViewController);
