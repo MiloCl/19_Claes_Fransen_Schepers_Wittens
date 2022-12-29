@@ -22,7 +22,13 @@ public class MetroGatePane extends VBox {
     public MetroGatePane(MetroStationViewController metroStationViewController) {
         metroCardIds.show();
         this.getChildren().addAll(gateNr, gateIDLabel ,metroCardIds, scanCard, walkTrough, status);
-        scanCard.setOnAction(e -> metroStationViewController.scanCard(gateID, metroCardIds.getValue()));
+        scanCard.setOnAction(e -> {
+            metroStationViewController.scanCard(gateID, metroCardIds.getValue());
+        });
+
+        walkTrough.setOnAction(e -> {
+            metroStationViewController.walkThroughGate(gateID);
+        });
     }
 
     public void updateMetroCardIDList(ArrayList<Integer> ids) {

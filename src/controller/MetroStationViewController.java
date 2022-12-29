@@ -18,6 +18,9 @@ public class MetroStationViewController implements Observer{
         facade.registerObserver(this, MetroEventsEnum.BUY_NEW_METROCARD);
         facade.registerObserver(this, MetroEventsEnum.BUY_METROCARD_TICKETS);
         facade.registerObserver(this, MetroEventsEnum.METROCARD_SCANNED);
+        facade.registerObserver(this, MetroEventsEnum.OPEN_METROGATE);
+        facade.registerObserver(this, MetroEventsEnum.METROGATE_OPENED);
+        facade.registerObserver(this, MetroEventsEnum.CLOSE_METROGATE);
     }
 
     public MetroFacade getFacade() {
@@ -38,5 +41,9 @@ public class MetroStationViewController implements Observer{
 
     public void scanCard(int gateID, Integer cardID) {
         facade.scanCard(gateID, cardID);
+    }
+
+    public void walkThroughGate(int gateID) {
+        facade.walkThroughGate(gateID);
     }
 }

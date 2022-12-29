@@ -22,5 +22,7 @@ public class Closed extends MetroGateState {
     public String toString() {
         return "Closed";
     }
+
+
 }
 
