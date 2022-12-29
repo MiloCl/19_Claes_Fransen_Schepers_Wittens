@@ -12,5 +12,10 @@ public class Inactive extends MetroGateState {
     public void activateGate() {
         metroGate.setState(metroGate.getClosed());
     }
+
+    @Override
+    public String toString() {
+        return "Inactive";
+    }
 }
 

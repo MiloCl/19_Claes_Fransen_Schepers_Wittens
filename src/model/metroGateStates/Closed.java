@@ -17,5 +17,10 @@ public class Closed extends MetroGateState {
     public void deactivateGate() {
         metroGate.setState(metroGate.getInactive());
     }
+
+    @Override
+    public String toString() {
+        return "Closed";
+    }
 }
 

@@ -27,7 +27,7 @@ public class MetroStation {
 
 
     public void scanCard(int gateID, Integer cardID) {
-        MetroGate metroGate = metroGates.get(gateID);
+        MetroGate metroGate = metroGates.get(gateID - 1);
         metroGate.scanCard();
     }
 
