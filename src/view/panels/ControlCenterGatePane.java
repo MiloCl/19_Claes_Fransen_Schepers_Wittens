@@ -18,8 +18,11 @@ public class ControlCenterGatePane extends VBox {
 
     public ControlCenterGatePane(ControlCenterPaneController controlCenterPaneController) {
         this.getChildren().addAll(gateIDLabel, activate, deactivate, scannedCardsLabel, nrOfScannedCards);
+        this.setStyle("-fx-background-color: lightgrey");
 
-        /*activate.setOnAction(e -> controlCenterPaneController.activateGate(gateID));
-        deactivate.setOnAction(e -> controlCenterPaneController.deactivateGate(gateID));*/
+        //activate.setOnAction(e -> controlCenterPaneController.activateGate(gateID));
+        //deactivate.setOnAction(e -> controlCenterPaneController.deactivateGate(gateID));
+        deactivate.setOnAction(e -> setStyle("-fx-background-color: orange"));
+        activate.setOnAction(e -> setStyle("-fx-background-color: lightgrey"));
     }
 }
