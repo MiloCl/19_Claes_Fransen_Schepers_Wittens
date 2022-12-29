@@ -22,6 +22,7 @@ public class AdminView{
 
 	public AdminView(AdminOverviewViewController adminOverviewViewController, ControlCenterPaneController controlCenterPaneController){
 		this.adminOverviewViewController = adminOverviewViewController;
+		this.controlCenterPaneController = controlCenterPaneController;
 		stage.setTitle("ADMIN VIEW");
 		stage.initStyle(StageStyle.UTILITY);
 		stage.setX(660);
@@ -49,5 +50,9 @@ public class AdminView{
 
 	public void updateErrors(ArrayList<String> errors) {
 		ControlCenterPane.updateErrors(errors);
+	}
+
+	public void updateNrOfCardsScanned(ArrayList<MetroGate> metroGates) {
+		ControlCenterPane.updateNrOfCardsScanned(metroGates);
 	}
 }

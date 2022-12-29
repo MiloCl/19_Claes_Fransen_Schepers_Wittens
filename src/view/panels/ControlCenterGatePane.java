@@ -22,10 +22,18 @@ public class ControlCenterGatePane extends VBox {
         this.setStyle("-fx-background-color: lightgrey");
         error.setStyle("-fx-text-fill: red");
 
-        //activate.setOnAction(e -> controlCenterPaneController.activateGate(gateID));
-        //deactivate.setOnAction(e -> controlCenterPaneController.deactivateGate(gateID));
-        deactivate.setOnAction(e -> setStyle("-fx-background-color: orange"));
-        activate.setOnAction(e -> setStyle("-fx-background-color: lightgrey"));
+
+        deactivate.setOnAction(e -> {
+            try {
+                controlCenterPaneController.deactivateGate(gateID);
+            }
+            catch (Exception ex) {
+                error.setText("error: " + ex.getMessage());
+                error.setStyle("-fx-text-fill: red");
+            }
+        });
+
+        activate.setOnAction(e -> controlCenterPaneController.activateGate(gateID));
     }
 
     public void updateStatus(String stateAsString) {

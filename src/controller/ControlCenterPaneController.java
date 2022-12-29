@@ -15,8 +15,16 @@ import java.util.TreeMap;
 
 public class ControlCenterPaneController implements Observer {
     private AdminView adminView;
-    private static MetroFacade facade = MetroFacade.getInstance();
-    public static MetroCardDatabase metroCardDatabase = facade.getMetroCardDatabase();
+    private static MetroFacade facade;
+
+    public ControlCenterPaneController(MetroFacade facade) {
+        this.facade = facade;
+        facade.registerObserver(this, MetroEventsEnum.ACTIVATE_METROGATE);
+        facade.registerObserver(this, MetroEventsEnum.DEACTIVATE_METROGATE);
+        facade.registerObserver(this, MetroEventsEnum.OPEN_METROSTATION);
+        facade.registerObserver(this, MetroEventsEnum.ALERT);
+        facade.registerObserver(this, MetroEventsEnum.METROCARD_SCANNED);
+    }
 
     public static void openMetroStation() {
         facade.openMetroStation();
@@ -28,7 +36,10 @@ public class ControlCenterPaneController implements Observer {
 
     @Override
     public void update(TreeMap<String, MetroCard> metroCards) {
-
+        System.out.println("adminview: " + adminView + " updatemethode controclcenterpanecontroller");
+        adminView.updateGates(facade.getMetroGates());
+        adminView.updateErrors(facade.getErrors());
+        adminView.updateNrOfCardsScanned(facade.getMetroGates());
     }
 
     public void activateGate(int gateID) {

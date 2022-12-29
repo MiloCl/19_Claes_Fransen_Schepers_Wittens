@@ -34,7 +34,11 @@ public class MetroGatePane extends VBox {
             });
 
         walkTrough.setOnAction(e -> {
-            metroStationViewController.walkThroughGate(gateID);
+            try {
+                metroStationViewController.walkThroughGate(gateID);
+            } catch (Exception exception) {
+                error.setText("Error: " + exception.getMessage());
+            }
         });
     }
 

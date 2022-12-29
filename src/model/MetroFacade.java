@@ -22,6 +22,7 @@ public class MetroFacade implements Subject{
     private TreeMap<String, MetroCard> metroCards = new TreeMap<>();
     private TicketPriceFactory ticketPriceFactory = new TicketPriceFactory();
     private MetroStation metroStation;
+    private ArrayList<String> errors = new ArrayList<>();
 
 
     public MetroFacade() {
@@ -29,13 +30,13 @@ public class MetroFacade implements Subject{
         this.metroStation = new MetroStation();
 
     }
+
     public static MetroFacade getInstance(){
         if (facade == null) {
             facade = new MetroFacade();
         }
         return facade;
     }
-
 
     @Override
     public void registerObserver(Observer o, MetroEventsEnum metroEventsEnum) {
@@ -97,8 +98,6 @@ public class MetroFacade implements Subject{
         return ticketPriceFactory.createTicketPrice(is24Min, is64Plus, isStudent, metroCard).getPriceText();
     }
 
-
-
     public void scanCard(int gateID, Integer cardID) {
         MetroGate metroGate = metroStation.getMetroGate(gateID - 1);
 
@@ -125,11 +124,9 @@ public class MetroFacade implements Subject{
             notifyObservers(MetroEventsEnum.CLOSE_METROGATE);
     }
 
-
     private void gateOpened(int gateID) {
         notifyObservers(MetroEventsEnum.METROGATE_OPENED);
     }
-
 
     private void cardScanned(int cardID){
         metroCardDatabase.getMetroCard(cardID).setBeschikbareRitten(metroCardDatabase.getMetroCard(cardID).getBeschikbareRitten()-1);

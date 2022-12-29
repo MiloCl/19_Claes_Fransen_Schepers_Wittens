@@ -47,6 +47,41 @@ public class ControlCenterPane extends VBox {
         closeMetroStation.setOnAction(e -> controlCenterPaneController.closeMetroStation());
     }
 
+    public static void updateGates(ArrayList<MetroGate> metroGates) {
+        for (MetroGate metrogate: metroGates) {
+            if(metrogate.getGateID() == 1) {
+                gate1.updateStatus(metrogate.getStateAsString());
+            }
+            else if(metrogate.getGateID() == 2) {
+                gate2.updateStatus(metrogate.getStateAsString());
+            }
+            else if(metrogate.getGateID() == 3) {
+                gate3.updateStatus(metrogate.getStateAsString());
+            }
+        }
+    }
+
+    public static void updateErrors(ArrayList<String> errors) {
+        alerts.setStyle("-fx-text-fill: red;");
+        alerts.setText("");
+        for(String error: errors) {
+            alerts.setText(alerts.getText() + error +"\n");
+        }
+    }
+
+    public static void updateNrOfCardsScanned(ArrayList<MetroGate> metroGates) {
+        for (MetroGate metrogate: metroGates) {
+            if(metrogate.getGateID() == 1) {
+                gate1.updateNrOfCardsScanned(metrogate.getNrOfScans());
+            }
+            else if(metrogate.getGateID() == 2) {
+                gate2.updateNrOfCardsScanned(metrogate.getNrOfScans());
+            }
+            else if(metrogate.getGateID() == 3) {
+                gate3.updateNrOfCardsScanned(metrogate.getNrOfScans());
+            }
+        }
+    }
 }
 
 
