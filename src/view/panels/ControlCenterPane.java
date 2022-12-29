@@ -1,6 +1,7 @@
 package view.panels;
 
 import controller.ControlCenterPaneController;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -44,7 +45,14 @@ public class ControlCenterPane extends VBox {
 
         openMetroStation.setOnAction(e -> controlCenterPaneController.openMetroStation());
 
-        closeMetroStation.setOnAction(e -> controlCenterPaneController.closeMetroStation());
+        closeMetroStation.setOnAction(e -> {
+            controlCenterPaneController.closeMetroStation();
+            //Close the application
+            //Platform.exit();
+                }
+
+        );
+
     }
 
     public static void updateGates(ArrayList<MetroGate> metroGates) {
