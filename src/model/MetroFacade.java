@@ -107,6 +107,15 @@ public class MetroFacade implements Subject{
         }
     }
 
+    public void walkThroughGate(int gateID) {
+            metroStation.closeGate(gateID);
+            notifyObservers(MetroEventsEnum.CLOSE_METROGATE);
+    }
+
+
+    private void gateOpened(int gateID) {
+        notifyObservers(MetroEventsEnum.METROGATE_OPENED);
+    }
 
 
     private void cardScanned(int cardID){

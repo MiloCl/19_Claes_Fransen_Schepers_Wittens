@@ -34,4 +34,9 @@ public class MetroStation {
     public ArrayList<MetroGate> getMetroGates() {
         return metroGates;
     }
+
+    public void closeGate(int gateID) {
+        MetroGate metroGate = metroGates.get(gateID - 1);
+        metroGate.walkThroughGate();
+    }
 }

@@ -40,10 +40,6 @@ public class MetroGate {
         this.state = state;
     }
 
-
-
-
-
     public String getStateAsString() {
         System.out.println(this.state.toString());
         return this.state.toString();
@@ -53,9 +49,12 @@ public class MetroGate {
         state.scanMetroCard();
     }
 
+    public void walkThroughGate() { state.walkThroughGate(); }
     public int getGateID() {
         return this.id;
     }
+
+
 
     /*public String getState() {
         //return this.state;
