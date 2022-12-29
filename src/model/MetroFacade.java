@@ -164,6 +164,11 @@ public class MetroFacade implements Subject{
         return errors;
     }
 
+    public void closeMetroStation() {
+        metroCardDatabase.save();
+        notifyObservers(MetroEventsEnum.CLOSE_METROSTATION);
+    }
+
     /*public TicketPrice createTicketPrice() {
         TicketPrice ticketPrice = new TicketPrice();
         return ticketPrice;

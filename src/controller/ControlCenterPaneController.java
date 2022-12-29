@@ -38,4 +38,8 @@ public class ControlCenterPaneController implements Observer {
     public void deactivateGate(int gateID) {
         facade.deactivateGate(gateID);
     }
+
+    public void closeMetroStation() {
+        facade.closeMetroStation();
+    }
 }

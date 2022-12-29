@@ -18,6 +18,7 @@ public class ControlCenterPane extends VBox {
     static Label alerts = new Label("Alerts: \n");
 
     Button openMetroStation = new Button("Open Metro Station");
+    Button closeMetroStation = new Button("Close Metro Station");
 
     public ControlCenterPane(ControlCenterPaneController controlCenterPaneController) {
         this.getChildren().addAll(openMetroStation);
@@ -38,10 +39,12 @@ public class ControlCenterPane extends VBox {
 
         gatesControl.setSpacing(15);
         gatesControl.getChildren().addAll(gate1, gate2, gate3);
-        this.getChildren().addAll(gatesControl, alerts);
+        this.getChildren().addAll(gatesControl, alerts, closeMetroStation);
 
 
         openMetroStation.setOnAction(e -> controlCenterPaneController.openMetroStation());
+
+        closeMetroStation.setOnAction(e -> controlCenterPaneController.closeMetroStation());
     }
 
 }
