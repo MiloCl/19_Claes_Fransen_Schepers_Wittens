@@ -28,6 +28,10 @@ public abstract class TekstLoadSaveTemplate<K,V>{
         return returnMap;
     }
 
+    public void save(){
+
+    }
+
     protected abstract V maakObject(String[] tokens);
 
     protected abstract K getKey(String[] tokens);
