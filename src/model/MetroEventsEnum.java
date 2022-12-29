@@ -6,4 +6,5 @@ public enum MetroEventsEnum {
     BUY_NEW_METROCARD,
     BUY_METROCARD_TICKETS,
     SCAN_METROGATE,
+    METROCARD_SCANNED
 }

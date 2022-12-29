@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.domain.MetroGate;
 
 import java.util.ArrayList;
 
@@ -33,4 +34,9 @@ public class MetroStationView {
 	public void updateMetroCardIDList(ArrayList<Integer> ids) {
 		MetroStationPane.updateMetroCardIDList(ids);
 	}
-}
+
+	public void updateGatesStatusses(ArrayList<MetroGate> metroGates) {
+		MetroStationPane.updateGateStatus(metroGates);
+	}
+	}
+

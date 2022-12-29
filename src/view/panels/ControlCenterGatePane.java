@@ -18,5 +18,8 @@ public class ControlCenterGatePane extends VBox {
 
     public ControlCenterGatePane(ControlCenterPaneController controlCenterPaneController) {
         this.getChildren().addAll(gateIDLabel, activate, deactivate, scannedCardsLabel, nrOfScannedCards);
+
+        /*activate.setOnAction(e -> controlCenterPaneController.activateGate(gateID));
+        deactivate.setOnAction(e -> controlCenterPaneController.deactivateGate(gateID));*/
     }
 }

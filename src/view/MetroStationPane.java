@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.database.MetroCardDatabase;
 import model.domain.MetroCard;
+import model.domain.MetroGate;
 
 import java.util.ArrayList;
 
@@ -46,5 +47,17 @@ public class MetroStationPane extends VBox {
        gate1.updateMetroCardIDList(ids);
        gate2.updateMetroCardIDList(ids);
        gate3.updateMetroCardIDList(ids);
+    }
+
+    public static void updateGateStatus(ArrayList<MetroGate> metroGates) {
+        for (MetroGate metroGate : metroGates) {
+            if (metroGate.getGateID() == 1) {
+                gate1.updateStatus(metroGate.getStateAsString());
+            } else if (metroGate.getGateID() == 2) {
+                gate2.updateStatus(metroGate.getStateAsString());
+            } else if (metroGate.getGateID() == 3) {
+                gate3.updateStatus(metroGate.getStateAsString());
+            }
+        }
     }
 }

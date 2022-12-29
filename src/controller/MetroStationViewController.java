@@ -31,7 +31,11 @@ public class MetroStationViewController implements Observer{
     public void update(TreeMap<String, MetroCard> metroCards) {
         ArrayList<Integer> IDS = facade.getMetroCardIDList();
         metroStationView.updateMetroCardIDList(IDS);
+        metroStationView.updateGatesStatusses(facade.getMetroGates());
     }
 
 
+    public void scanCard(int gateID, Integer cardID) {
+        facade.scanCard(gateID, cardID);
+    }
 }

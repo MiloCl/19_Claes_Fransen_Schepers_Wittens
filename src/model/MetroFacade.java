@@ -3,6 +3,7 @@ package model;
 import model.database.MetroCardDatabase;
 import model.domain.MetroCard;
 import controller.Observer;
+import model.domain.MetroGate;
 import model.domain.MetroStation;
 import model.ticketPriceDecorator.TicketPrice;
 import model.ticketPriceDecorator.TicketPriceFactory;
@@ -94,6 +95,35 @@ public class MetroFacade implements Subject{
 
     public String getPriceText(boolean is24Min, boolean is64Plus, boolean isStudent, MetroCard metroCard) throws IOException{
         return ticketPriceFactory.createTicketPrice(is24Min, is64Plus, isStudent, metroCard).getPriceText();
+    }
+
+
+
+    public void scanCard(int gateID, Integer cardID) {
+        if(scanCardPossible(cardID)){
+            metroStation.scanCard(gateID, cardID);
+            cardScanned(cardID);
+            notifyObservers(MetroEventsEnum.SCAN_METROGATE);
+        }
+    }
+
+
+
+    private void cardScanned(int cardID){
+        metroCardDatabase.getMetroCard(cardID).setBeschikbareRitten(metroCardDatabase.getMetroCard(cardID).getBeschikbareRitten()-1);
+        notifyObservers(MetroEventsEnum.METROCARD_SCANNED);
+    }
+
+    private boolean scanCardPossible(Integer cardID) {
+        MetroCard metroCard = metroCardDatabase.getMetroCard(cardID);
+        if(metroCard.getBeschikbareRitten() >= 1){
+            return true;
+        }
+        return false;
+    }
+
+    public ArrayList<MetroGate> getMetroGates() {
+        return metroStation.getMetroGates();
     }
 
     /*public TicketPrice createTicketPrice() {

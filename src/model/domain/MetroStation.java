@@ -19,4 +19,19 @@ public class MetroStation {
     public void addMetroGate(int id) {
         metroGates.add(new MetroGate(id));
     }
+
+    public MetroGate getMetroGate(int id) {
+        return metroGates.get(id);
+    }
+
+
+
+    public void scanCard(int gateID, Integer cardID) {
+        MetroGate metroGate = metroGates.get(gateID);
+        metroGate.scanCard();
+    }
+
+    public ArrayList<MetroGate> getMetroGates() {
+        return metroGates;
+    }
 }
